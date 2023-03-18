@@ -37,6 +37,8 @@ export default function GlobalNav() {
         <div className="h-10 w-10 bg-red-100"></div>
         <div className="h-10 w-10 bg-red-100"></div>
         <div className="h-10 w-10 bg-red-100"></div>
+        <div className="h-10 w-10 bg-red-100"></div>
+        <div className="h-10 w-10 bg-red-100"></div>
       </div>
     </nav>
   );
