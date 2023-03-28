@@ -3,6 +3,8 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
+      white: "#ffffff",
+      black: "000000",
       gray: {
         50: "#f9fafb",
         80: "#f1f3f5",
@@ -95,6 +97,16 @@ module.exports = {
         900: "#281566",
       },
     },
+    screens: {
+      sm: "760px",
+      // => @media (min-width: 760px) { ... }
+
+      md: "1200px",
+      // => @media (min-width: 1200px) { ... }
+
+      lg: "1600px",
+      // => @media (min-width: 1600px) { ... }
+    },
     extend: {
       fontSize: {
         largetitle: ["2.125rem", "2.625rem"],
@@ -109,6 +121,7 @@ module.exports = {
       },
       boxShadow: {
         cardborder: "inset 0 0 4px 4px blue",
+        leftpanel: "1px 0px 2px 0px #1118271a, 4px 0px 8px 0px #11182726",
       },
     },
   },
