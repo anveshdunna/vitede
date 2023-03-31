@@ -18,12 +18,13 @@ import Help from "./pages/Help";
 import Notifications from "./pages/Notifications";
 import AppNav from "./components/AppNav";
 import NavContextProvider from "./contexts/NavContext";
+import GlobalNav from "./components/GlobalNav";
 
 function Layout(props) {
   return (
-    <div className="flex h-full min-h-full w-full flex-row items-stretch overflow-hidden text-gray-900">
+    <div className="flex h-screen min-h-screen w-screen flex-row items-stretch overflow-y-auto overflow-x-hidden bg-white text-gray-900">
       <NavContextProvider>
-        <AppNav />
+        <GlobalNav />
         {props.children}
       </NavContextProvider>
     </div>

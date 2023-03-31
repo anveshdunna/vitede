@@ -35,18 +35,16 @@ export const NavContextProvider = ({ children }) => {
     };
   }, []);
 
-  return (
-    <NavContext.Provider
-      value={{
-        navOpen,
-        changeNavOpen,
-        screenWidth,
-        pnavOpen,
-      }}
-    >
-      {children}
-    </NavContext.Provider>
-  );
+  const value = {
+    navOpen,
+    setNavOpen,
+    changeNavOpen,
+    screenWidth,
+    setScreenWidth,
+    pnavOpen,
+  };
+
+  return <NavContext.Provider value={value}>{children}</NavContext.Provider>;
 };
 
 export const useNav = () => useContext(NavContext);

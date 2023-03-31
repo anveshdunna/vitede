@@ -5,7 +5,7 @@ import PageHeader from "../components/PageHeader";
 function TravelHome() {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="flex-1">
       <header>
         <Icon name="notification" />
         <div>Home page</div>
@@ -13,7 +13,7 @@ function TravelHome() {
 
       <div>This is the home page.</div>
       <button onClick={() => navigate("/travel/new-trip")}>Create trip</button>
-      <PageHeader />
+      <PageHeader title="Overview" />
 
       <div className="flex flex-col">
         <div className="h-72 w-96 bg-orange-100"></div>
@@ -22,7 +22,7 @@ function TravelHome() {
         <div className="h-72 w-96 bg-yellow-100"></div>
         <div className="h-72 w-96 bg-red-100"></div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,8 +1,12 @@
 import React from "react";
+import PageHeader from "../components/PageHeader";
 
 function Concierge() {
   return (
-    <div>Concierge ConciergeConciergeConciergeConciergeConciergeConcierge</div>
+    <div>
+      <PageHeader title="Concierge" />
+      Concierge ConciergeConciergeConciergeConciergeConciergeConcierge
+    </div>
   );
 }
 

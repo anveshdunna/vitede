@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useNav } from "../contexts/NavContext";
 
 function ProductNavItem({ item }) {
-  const { changeNavOpen, screenWidth } = useNav();
   return (
     <NavLink
       to={item.path}
@@ -17,7 +16,6 @@ function ProductNavItem({ item }) {
             : `text-gray-700 hover:bg-gray-80 active:bg-gray-100	`
         }`
       }
-      onClick={screenWidth <= 1200 && changeNavOpen}
     >
       {item.title}
     </NavLink>
@@ -27,16 +25,14 @@ function ProductNavItem({ item }) {
 function GlobalNavItem({ item, setIndex }) {
   const location = useLocation().pathname.split("/")[1];
   const isActive = location === item.path.split("/")[1];
-  const { changeNavOpen, screenWidth } = useNav();
 
   return (
     <NavLink
       to={item.path}
       onClick={() => {
         setIndex && setIndex(item.id);
-        screenWidth <= 1200 && changeNavOpen();
       }}
-      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 px-2 text-caption2 font-medium no-underline transition duration-75 ${
+      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 px-2 text-caption2 no-underline transition duration-75 ${
         isActive
           ? `bg-orange-50 text-orange-500`
           : `text-gray-700 hover:bg-gray-80 active:bg-gray-100`
@@ -48,7 +44,7 @@ function GlobalNavItem({ item, setIndex }) {
   );
 }
 
-function GlobalNav() {
+function GlobalNavBackup() {
   const location = useLocation().pathname.split("/")[1];
   let initialIndex;
 
@@ -75,18 +71,18 @@ function GlobalNav() {
     <>
       {(navOpen || screenWidth > 1200) && (
         <div className="sticky top-0 h-screen overflow-y-auto">
-          <div
-            className="fixed h-screen w-screen md:hidden"
+          {/* <div
+            className="fixed h-screen w-screen bg-white/80 md:hidden"
             onClick={changeNavOpen}
-          ></div>
+          ></div> */}
           <div
-            className={`fixed flex h-screen flex-row border-r border-solid border-gray-200 bg-white shadow-leftpanel md:sticky md:top-0 md:shadow-none`}
+            className={`sticky top-0 flex h-screen flex-row border-r border-solid border-gray-200 bg-white shadow-leftpanel md:shadow-none`}
           >
             <nav className="flex w-16 flex-col justify-between py-2 px-1">
               <div className="flex flex-col items-stretch">
                 <Link
                   to="/"
-                  className="hidden h-12 flex-col items-center justify-center rounded-xl hover:bg-gray-80 active:bg-gray-100 md:flex"
+                  className="hidden h-12 flex-col items-center justify-center rounded-xl hover:bg-gray-80 md:flex"
                   onClick={() => {
                     setIndex(0);
                   }}
@@ -105,6 +101,33 @@ function GlobalNav() {
                   })}
                 </div>
               </div>
+
+              {globalNavLinks.map((item) => {
+                return (
+                  <>
+                    {pnavOpen && (
+                      <div
+                        hidden={index !== item.id}
+                        className={
+                          item.id === 0
+                            ? ``
+                            : `absolute left-16 top-0 ${
+                                index !== item.id ? `` : `flex flex-col gap-1`
+                              } h-screen w-[216px] border-l border-r border-solid border-l-gray-100 border-r-gray-200 bg-white p-2`
+                        }
+                        key={item.key}
+                      >
+                        {item.subnav &&
+                          item.subnav.map((item) => {
+                            return (
+                              <ProductNavItem item={item} key={item.key} />
+                            );
+                          })}
+                      </div>
+                    )}
+                  </>
+                );
+              })}
 
               <div className="flex flex-col items-center gap-2">
                 {globalNavUtils.map((item) => {
@@ -131,16 +154,16 @@ function GlobalNav() {
 
             {globalNavLinks.map((item) => {
               return (
-                <>
+                <div>
                   {pnavOpen && (
                     <div
                       hidden={index !== item.id}
                       className={
                         item.id === 0
                           ? ``
-                          : ` ${
+                          : `absolute left-16 top-0 ${
                               index !== item.id ? `` : `flex flex-col gap-1`
-                            } h-screen w-[216px] border-l border-solid border-l-gray-100 bg-white p-2`
+                            } h-screen w-[216px] border-l border-r border-solid border-l-gray-100 border-r-gray-200 bg-white p-2`
                       }
                       key={item.key}
                     >
@@ -150,7 +173,7 @@ function GlobalNav() {
                         })}
                     </div>
                   )}
-                </>
+                </div>
               );
             })}
           </div>
@@ -160,4 +183,4 @@ function GlobalNav() {
   );
 }
 
-export default GlobalNav;
+export default GlobalNavBackup;

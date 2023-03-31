@@ -1,7 +1,7 @@
 import Icon from "../assets/Icon";
 import { useNav } from "../contexts/NavContext";
 
-function PageHeader() {
+function PageHeader({ title }) {
   const { changeNavOpen } = useNav();
 
   return (
@@ -12,7 +12,7 @@ function PageHeader() {
       >
         <Icon name="notification" />
       </button>
-      PageHeader
+      {title}
     </header>
   );
 }
