@@ -11,7 +11,7 @@ function ProductNavItem({ item }) {
     <NavLink
       to={item.path}
       className={({ isActive }) =>
-        `rounded-lg py-2 px-2 text-body2 font-medium no-underline transition duration-75 ${
+        `rounded-lg py-2 px-2 text-body2 font-medium no-underline transition duration-100 ${
           isActive
             ? `bg-orange-50 text-orange-500`
             : `text-gray-700 hover:bg-gray-80 active:bg-gray-100	`
@@ -36,7 +36,7 @@ function GlobalNavItem({ item, setIndex }) {
         setIndex && setIndex(item.id);
         screenWidth <= 1200 && changeNavOpen();
       }}
-      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 px-2 text-caption2 font-medium no-underline transition duration-75 ${
+      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 px-2 text-caption2 font-medium no-underline transition duration-100 ${
         isActive
           ? `bg-orange-50 text-orange-500`
           : `text-gray-700 hover:bg-gray-80 active:bg-gray-100`
