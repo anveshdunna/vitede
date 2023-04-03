@@ -8,8 +8,8 @@ import {
 import Home from "./pages/Home";
 import TravelHome from "./pages/TravelHome";
 import ExpenseHome from "./pages/ExpenseHome";
-import NewTrip from "./pages/NewTrip";
-import Results from "./pages/Results";
+import CreateTrip from "./pages/CreateTrip";
+import SelectOptions from "./pages/SelectOptions";
 import Trips from "./pages/Trips";
 import Events from "./pages/Events";
 import Concierge from "./pages/Concierge";
@@ -42,8 +42,8 @@ function App() {
           <Route path="travel/events" element={<Events />} />
           <Route path="travel/concierge" element={<Concierge />} />
           <Route path="travel/approvals" element={<Approvals />} />
-          <Route path="travel/new-trip" element={<NewTrip />} />
-          <Route path="results" element={<Results />} />
+          <Route path="travel/create-trip" element={<CreateTrip />} />
+          <Route path="travel/select-options" element={<SelectOptions />} />
           <Route path="expense/overview" element={<ExpenseHome />} />
           <Route path="expense/expenses" element={<ExpenseHome />} />
           <Route path="expense/reports" element={<ExpenseHome />} />

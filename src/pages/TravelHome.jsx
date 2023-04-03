@@ -12,7 +12,9 @@ function TravelHome() {
       </header>
 
       <div>This is the home page.</div>
-      <button onClick={() => navigate("/travel/new-trip")}>Create trip</button>
+      <button onClick={() => navigate("/travel/create-trip")}>
+        Create trip
+      </button>
       <PageHeader title="Overview" />
 
       <div className="flex flex-col">

@@ -12,7 +12,7 @@ export const NavContextProvider = ({ children }) => {
   const splitLocation = pathname.split("/");
   const path = splitLocation[2];
 
-  if (path === "new-trip") {
+  if (path === "create-trip" || path === "select-options") {
     pnavOpen = false;
     console.log(path, pnavOpen);
   } else {

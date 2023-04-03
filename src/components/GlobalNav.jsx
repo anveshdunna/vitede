@@ -51,8 +51,10 @@ function GlobalNavItem({ item, setIndex }) {
 function GlobalNav() {
   const location = useLocation().pathname.split("/")[1];
   let initialIndex;
-
   const { navOpen, changeNavOpen, screenWidth } = useNav();
+  const [index, setIndex] = useState(initialIndex);
+  const { pnavOpen } = useNav();
+  const navOpenCondition = `(navOpen || screenWidth > 1200) &&`;
 
   switch (location) {
     case "":
@@ -68,19 +70,20 @@ function GlobalNav() {
       initialIndex = 0;
   }
 
-  const [index, setIndex] = useState(initialIndex);
-  const { pnavOpen } = useNav();
-
   return (
     <>
-      {(navOpen || screenWidth > 1200) && (
+      {
         <div className="sticky top-0 h-screen overflow-y-auto">
+          {(navOpen || screenWidth > 1200) && (
+            <div
+              className="fixed h-screen w-screen md:hidden"
+              onClick={changeNavOpen}
+            ></div>
+          )}
           <div
-            className="fixed h-screen w-screen md:hidden"
-            onClick={changeNavOpen}
-          ></div>
-          <div
-            className={`fixed flex h-screen flex-row border-r border-solid border-gray-200 bg-white shadow-leftpanel md:sticky md:top-0 md:shadow-none`}
+            className={`fixed ${
+              navOpen ? `left-0 shadow-leftpanel` : `-left-[280px]`
+            } flex h-screen flex-row border-r border-solid border-gray-200 bg-white transition-[left] md:sticky md:left-0 md:top-0 md:shadow-none`}
           >
             <nav className="flex w-16 flex-col justify-between py-2 px-1">
               <div className="flex flex-col items-stretch">
@@ -155,7 +158,7 @@ function GlobalNav() {
             })}
           </div>
         </div>
-      )}
+      }
     </>
   );
 }
