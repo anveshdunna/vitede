@@ -14,7 +14,6 @@ export const NavContextProvider = ({ children }) => {
 
   if (path === "create-trip" || path === "select-options") {
     pnavOpen = false;
-    console.log(path, pnavOpen);
   } else {
     console.log("notfullscreen");
   }

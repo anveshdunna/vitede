@@ -1,8 +1,16 @@
-function SelectionsBar({ children }) {
+function SelectionsBar({ children, expand, changeExpand }) {
   return (
     <>
-      <div className="flex flex-row sticky top-0 bg-red-100-value px-10 py-4 h-24 z-30">
-        {children}
+      <div className="sticky top-0 z-10 flex flex-col items-stretch">
+        {expand && (
+          <div
+            className="fixed h-full w-[calc(100%-80px)] bg-gray-900/40"
+            onClick={changeExpand}
+          ></div>
+        )}
+        <div className="absolute top-0 z-10 flex w-full flex-row items-start justify-between border-b border-solid border-gray-200 bg-white px-10 py-3">
+          {children}
+        </div>
       </div>
     </>
   );

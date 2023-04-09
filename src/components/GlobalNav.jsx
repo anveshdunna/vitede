@@ -52,7 +52,7 @@ function GlobalNav() {
   const location = useLocation().pathname.split("/")[1];
   let initialIndex;
   const { navOpen, changeNavOpen, screenWidth } = useNav();
-  const [index, setIndex] = useState(initialIndex);
+
   const { pnavOpen } = useNav();
   const navOpenCondition = `(navOpen || screenWidth > 1200) &&`;
 
@@ -70,13 +70,15 @@ function GlobalNav() {
       initialIndex = 0;
   }
 
+  const [index, setIndex] = useState(initialIndex);
+
   return (
     <>
       {
-        <div className="sticky top-0 h-screen overflow-y-auto">
+        <div className="sticky top-0 h-screen flex-none overflow-y-auto">
           {(navOpen || screenWidth > 1200) && (
             <div
-              className="fixed h-screen w-screen md:hidden"
+              className="fixed h-screen w-full md:hidden"
               onClick={changeNavOpen}
             ></div>
           )}

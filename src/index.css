@@ -13,3 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+@layer components {
+  .page {
+    @apply flex h-fit flex-1 flex-col items-stretch;
+  }
+  .section {
+    @apply flex flex-col items-center;
+  }
+  .fixed-container {
+    @apply w-full sm:mx-6 sm:w-[calc(100%-3rem)] lg:w-[1320px];
+  }
+}

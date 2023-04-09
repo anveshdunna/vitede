@@ -5,7 +5,7 @@ import PageHeader from "../components/PageHeader";
 function TravelHome() {
   const navigate = useNavigate();
   return (
-    <div className="flex-1">
+    <div className="page" id="page">
       <header>
         <Icon name="notification" />
         <div>Home page</div>

@@ -7,22 +7,36 @@ import TripSteps from "../components/TripSteps";
 function CreateTrip() {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-1 flex-col items-stretch bg-gray-50">
-      <TripSteps />
+    <div className="page" id="page">
+      <TripSteps sticky />
       {/* Section */}
-      <div className="mt-10 flex flex-col items-center gap-4">
-        <div className="flex flex-col gap-4 lg:w-[1320px]">
-          <div className="h-40 w-full rounded-xl bg-gray-100"> </div>
-          <div className="h-40 w-full rounded-xl bg-gray-100"> </div>
-          <div className="h-40 w-full rounded-xl bg-gray-100"> </div>
-        </div>
+      <div className="section" id="section">
+        <div className="fixed-container">
+          <div className="mx-4 flex flex-col gap-4">
+            {Array(4)
+              .fill("")
+              .map(function () {
+                return (
+                  <div className="h-40 w-full rounded-xl bg-gray-100"> </div>
+                );
+              })}
 
-        <button
-          onClick={() => navigate("/travel/select-options")}
-          className="rounded-lg bg-gray-900 px-4 py-4 text-white"
-        >
-          Select options
-        </button>
+            <button
+              onClick={() => navigate("/travel/select-options")}
+              className="rounded-lg bg-gray-900 px-4 py-4 text-white"
+            >
+              Select options
+            </button>
+            <button
+              onClick={() => {
+                document.getElementById("section").scrollIntoView();
+                console.log("clicked");
+              }}
+            >
+              go to top
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
