@@ -29,9 +29,7 @@ function Layout(props) {
 
   return (
     <div
-      className={`flex h-screen min-h-screen flex-row ${
-        scrollDisabled ? `overflow-y-hidden pr-[17px]` : `overflow-y-auto`
-      } overflow-x-hidden bg-gray-50 text-gray-900`}
+      className={`flex h-screen min-h-screen flex-row bg-gray-50 text-gray-900`}
     >
       <NavContextProvider>
         <ScrollToTop>

@@ -75,7 +75,7 @@ function GlobalNav() {
   return (
     <>
       {
-        <div className="sticky top-0 h-screen flex-none overflow-y-auto">
+        <div className="fixed top-0 h-full flex-none overflow-y-auto">
           {(navOpen || screenWidth > 1200) && (
             <div
               className="fixed h-screen w-full md:hidden"
