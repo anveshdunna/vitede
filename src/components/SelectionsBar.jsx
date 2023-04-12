@@ -4,7 +4,7 @@ function SelectionsBar({ children, expand, changeExpand }) {
       <div className="sticky top-0 z-10 flex flex-col items-stretch">
         {expand && (
           <div
-            className="fixed h-full w-[calc(100%-80px)] bg-gray-900/40"
+            className="fixed h-full w-full bg-gray-900/40"
             onClick={changeExpand}
           ></div>
         )}

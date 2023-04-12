@@ -3,11 +3,12 @@ import { useNav } from "../contexts/NavContext";
 import { useEffect } from "react";
 import TripCard from "../components/TripCard";
 import TripSteps from "../components/TripSteps";
+import Page from "./Page";
 
 function CreateTrip() {
   const navigate = useNavigate();
   return (
-    <div className="page" id="page">
+    <Page>
       <TripSteps sticky />
       {/* Section */}
       <div className="section" id="section">
@@ -38,7 +39,7 @@ function CreateTrip() {
           </div>
         </div>
       </div>
-    </div>
+    </Page>
   );
 }
 

@@ -5,8 +5,9 @@ import HotelCard from "../components/HotelCard";
 import Leg from "../components/SelectionNavItem";
 import TripSteps from "../components/TripSteps";
 import SelectionNavItem from "../components/SelectionNavItem";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useScroll } from "../contexts/ScrollContext";
+import Page from "./Page";
 
 function List(props) {
   return (
@@ -26,16 +27,25 @@ function SelectOptions(props) {
   const changeExpandSelections = () => {
     setExpandSelections(!expandSelections);
   };
+  const setExpandSelectionsFalse = () => {
+    setExpandSelections(false);
+  };
 
-  if (expandSelections == true) {
-    setScrollDisabled(true);
-    console.log(scrollDisabled);
-  } else {
-    setScrollDisabled(false);
-  }
+  //Find scrolldistance
+  const [scrollDistance, setScrollDistance] = useState(0);
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    setScrollDistance(scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", setExpandSelectionsFalse);
+    return () => {
+      window.removeEventListener("scroll", setExpandSelectionsFalse);
+    };
+  }, []);
 
   return (
-    <div className="page" id="page">
+    <Page>
       <TripSteps />
       <SelectionsBar
         changeExpand={changeExpandSelections}
@@ -52,6 +62,7 @@ function SelectOptions(props) {
             <div className="text-body1">
               Total <span className="font-semibold">$400</span>
             </div>
+            <div>{scrollDistance}</div>
             <button className="text-caption1" onClick={changeExpandSelections}>
               View selection
             </button>
@@ -77,7 +88,7 @@ function SelectOptions(props) {
           Container
         </div>
       </div>
-    </div>
+    </Page>
   );
 }
 

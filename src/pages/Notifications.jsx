@@ -1,13 +1,14 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
+import Page from "./Page";
 
 function Notifications() {
   return (
-    <div>
+    <Page>
       <PageHeader title="Notifications" />
       Notifications Notifications Notifications Notifications Notifications
       Notifications Notifications
-    </div>
+    </Page>
   );
 }
 

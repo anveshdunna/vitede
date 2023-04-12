@@ -1,12 +1,13 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
+import Page from "./Page";
 
 function Help() {
   return (
-    <div>
+    <Page>
       <PageHeader title="Help" />
       Help help help help help help help help help help help
-    </div>
+    </Page>
   );
 }
 

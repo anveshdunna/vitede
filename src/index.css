@@ -12,12 +12,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  background-color: #f9fafb;
 }
 
 @layer components {
-  .page {
+  /* .page {
     @apply flex h-fit flex-1 flex-col items-stretch;
-  }
+  } */
   .section {
     @apply flex flex-col items-center;
   }

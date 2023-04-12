@@ -10,9 +10,16 @@ export const NavContextProvider = ({ children }) => {
 
   const { pathname } = useLocation();
   const splitLocation = pathname.split("/");
-  const path = splitLocation[2];
+  const path1 = splitLocation[1];
+  const path2 = splitLocation[2];
 
-  if (path === "create-trip" || path === "select-options") {
+  if (
+    path1 === "" ||
+    path1 === "help" ||
+    path1 === "notifications" ||
+    path2 === "create-trip" ||
+    path2 === "select-options"
+  ) {
     pnavOpen = false;
   } else {
     console.log("notfullscreen");

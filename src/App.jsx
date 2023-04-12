@@ -25,12 +25,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function Layout(props) {
-  const { scrollDisabled, setScrollDisabled } = useScroll();
-
   return (
-    <div
-      className={`flex h-screen min-h-screen flex-row bg-gray-50 text-gray-900`}
-    >
+    <div className={`flex bg-gray-50 text-gray-900`}>
       <NavContextProvider>
         <ScrollToTop>
           <GlobalNav />

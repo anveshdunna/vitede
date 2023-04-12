@@ -4,6 +4,7 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 import { globalNavLinks, globalNavUtils } from "../data/globalNavData.js";
 import { useState } from "react";
 import { useNav } from "../contexts/NavContext";
+import React from "react";
 
 function ProductNavItem({ item }) {
   const { changeNavOpen, screenWidth } = useNav();
@@ -75,7 +76,7 @@ function GlobalNav() {
   return (
     <>
       {
-        <div className="fixed top-0 h-full flex-none overflow-y-auto">
+        <div className="fixed top-0 z-50 h-full flex-none overflow-y-auto">
           {(navOpen || screenWidth > 1200) && (
             <div
               className="fixed h-screen w-full md:hidden"
@@ -136,7 +137,7 @@ function GlobalNav() {
 
             {globalNavLinks.map((item) => {
               return (
-                <>
+                <React.Fragment key={item.key}>
                   {pnavOpen && (
                     <div
                       hidden={index !== item.id}
@@ -155,7 +156,7 @@ function GlobalNav() {
                         })}
                     </div>
                   )}
-                </>
+                </React.Fragment>
               );
             })}
           </div>
