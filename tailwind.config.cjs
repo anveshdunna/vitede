@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     colors: {
       white: "#ffffff",
-      black: "000000",
+      black: "#000000",
       gray: {
         50: "#f9fafb",
         80: "#f1f3f5",
@@ -122,6 +122,25 @@ module.exports = {
       boxShadow: {
         cardborder: "inset 0 0 4px 4px blue",
         leftpanel: "1px 0px 2px 0px #1118271a, 4px 0px 8px 0px #11182726",
+      },
+      animation: {
+        recommendation: "recommendation 12s infinite",
+      },
+      keyframes: {
+        recommendation: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(80px, -80px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-80px, 80px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
       },
     },
   },

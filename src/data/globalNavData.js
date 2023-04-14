@@ -3,7 +3,8 @@ export const globalNavLinks = [
     id: 0,
     key: 1,
     title: "Home",
-    icon: "travel",
+    icon: "home",
+    iconActive: "homeFilled",
     path: "/",
   },
   {
@@ -11,6 +12,7 @@ export const globalNavLinks = [
     key: 2,
     title: "Travel",
     icon: "travel",
+    iconActive: "travelFilled",
     path: "/travel/overview",
     subnav: [
       {
@@ -50,6 +52,7 @@ export const globalNavLinks = [
     key: 3,
     title: "Expense",
     icon: "expense",
+    iconActive: "expenseFilled",
     path: "/expense/overview",
     subnav: [
       {
@@ -85,12 +88,14 @@ export const globalNavUtils = [
     id: 0,
     key: 1,
     icon: "help",
+    iconActive: "helpFilled",
     path: "/help",
   },
   {
     id: 0,
     key: 2,
     icon: "notification",
+    iconActive: "notificationFilled",
     path: "/notifications",
   },
 ];
