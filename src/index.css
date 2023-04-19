@@ -12,8 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background-color: #f9fafb;
+  background-color: #f1f3f5;
 }
+
+/* F1F3F5  #f9fafb*/
 
 @layer components {
   /* .page {
@@ -23,7 +25,7 @@
     @apply flex flex-col items-center;
   }
   .fixed-container {
-    @apply w-full sm:mx-6 sm:w-[calc(100%-3rem)] lg:w-[1320px];
+    @apply w-screen sm:mx-6 sm:w-[calc(100%-3rem)] lg:w-[1320px];
   }
 }
 

@@ -1,62 +1,145 @@
-import List from "./List";
+import Icon from "../assets/Icon";
+import Point from "./Point";
 import Recommendation from "./Recommendation";
 import Tag from "./Tag";
 import { Link } from "react-router-dom";
+import { useNav } from "../contexts/NavContext";
+import MyButton from "./core/MyButton";
 
-function HotelCard({ recommended }) {
+const HotelTitle = ({ item }) => {
   return (
-    <li>
+    <div className="flex flex-col gap-1">
+      <div className="flex gap-0.5 text-white sm:text-gray-700">
+        {Array(item.starRating)
+          .fill(null)
+          .map(function () {
+            return (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+              >
+                <path
+                  fill="currentColor"
+                  d="M3.6 4 4.717.809a.3.3 0 0 1 .566 0L6.4 4h2.655a.3.3 0 0 1 .173.545L7.113 6.038 8.19 9.115a.3.3 0 0 1-.456.344L5 7.53 2.266 9.46a.3.3 0 0 1-.456-.344l1.077-3.077L.772 4.545A.3.3 0 0 1 .945 4H3.6Z"
+                />
+              </svg>
+            );
+          })}
+      </div>
+      <div className="text-body1 font-semibold text-white sm:truncate sm:text-gray-900">
+        {item.name}
+      </div>
+    </div>
+  );
+};
+
+const HotelRating = ({ item }) => {
+  return (
+    <div className="relative -top-[3px] flex flex-none flex-col items-end text-caption1">
+      <div className="mb-0.5 rounded-t-md rounded-br-md border border-solid border-white/40 bg-green-500 py-0.5 px-2 text-body2 font-semibold text-white sm:border-none">
+        {item.userRating}
+        <span className="font-regular text-caption2 text-white/60">/5</span>
+      </div>
+      <div className="font-medium text-white sm:block sm:text-green-500">
+        Very good
+      </div>
+      <div className="text-caption2 text-white sm:text-gray-500">
+        ({item.userReviewCount} reviews)
+      </div>
+    </div>
+  );
+};
+
+const HotelPoints = ({ item }) => {
+  return (
+    <div>
+      {/* Hotel address */}
+      <div className="mb-1 grid grid-cols-[auto_auto_auto_1fr] text-caption1 text-gray-700">
+        <Icon name="locationSmall" color="currentColor" />
+        <div className="ml-1">{item.distance} km from search location</div>
+        <div className="mx-1">·</div>
+        <a href="https://google.com" className="mr-3 truncate underline">
+          {item.address}
+        </a>
+      </div>
+
+      {/* Rest of the points */}
+      <div className="flex flex-col gap-1">
+        {item.points.map((item) => {
+          return <Point item={item} />;
+        })}
+        {/* <ListItem>Earn loyalty Lists</ListItem>
+        <ListItem>Breakfast included</ListItem>
+        <ListItem>
+          <a href="https://google.com">Cancellation policy</a>
+        </ListItem> */}
+      </div>
+    </div>
+  );
+};
+
+function HotelCard({ item }) {
+  const { screenWidth } = useNav();
+  return (
+    <li className="mb-4">
       <div className="relative z-[1] overflow-hidden rounded-xl bg-white no-underline outline outline-1 outline-offset-[-1px] outline-gray-900/20">
-        {recommended && <Recommendation />}
-        <div className="flex">
-          <div className="h-60 w-60">
+        {item.recommended && <Recommendation />}
+        <div className="flex flex-col sm:flex-row">
+          {/* Hotel image box */}
+          <div className="relative h-40 w-full flex-none overflow-clip sm:h-48 sm:w-48">
             <img
-              className="h-full object-cover"
+              className="h-full w-full object-cover"
               alt=""
-              src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=480&q=80"
+              src={item.img}
             ></img>
+
+            {/* Title and Rating in mobile */}
+            {screenWidth < 760 && (
+              <div className="absolute bottom-0 flex w-full items-end justify-between gap-6 bg-gradient-to-t from-black via-black/0 p-3 pt-32">
+                <HotelTitle item={item} />
+                <HotelRating item={item} />
+              </div>
+            )}
           </div>
-          <div className="flex grow flex-col gap-4 p-4">
-            <div className="flex flex-col gap-1">
-              <div>★★★★</div>
-              <div className="text-gray-900-value text-body1 font-semibold">
-                The Ritz-Carlton, Los Angeles
+
+          {/* Hotel details */}
+          <div className="flex min-w-0 grow flex-col items-stretch gap-4 py-3 pl-3 pr-0 sm:justify-between sm:p-4">
+            {/* Points in mobile */}
+            {screenWidth < 760 && <HotelPoints item={item} />}
+
+            {/* Title, Ratings and Bullets in Desktop */}
+            {screenWidth >= 760 && (
+              <div className="flex w-full min-w-0 justify-between gap-6">
+                <div className="flex min-w-0 flex-col gap-1">
+                  <HotelTitle item={item} />
+                  <HotelPoints item={item} />
+                </div>
+
+                <HotelRating item={item} />
               </div>
-              <div className="text-gray-700-value text-caption1">
-                <span>3.5 km from search location</span>
-                <span className="text-gray-500-value px-1">·</span>
-                <a href="https://itilite.com">
-                  90 Boulevard street, Los Angeles
-                </a>
-              </div>
-              <div className="text-caption1">
-                4.5/5<span className="mx-1">Very good</span>
-                <span>(2400 reviews)</span>
-              </div>
-            </div>
-            <div className="flex flex-row gap-1">
-              <Tag>Instant booking</Tag>
-              <Tag>GST assured</Tag>
-              <Tag>Quality unclear</Tag>
-            </div>
-            <div className="flex flex-col gap-1">
-              <List>Earn loyalty Lists</List>
-              <List>Breakfast included</List>
-              <List>
-                <a href="https://itilite.com">Cancellation policy</a>
-              </List>
+            )}
+
+            {/* Tags */}
+            <div className="inline-flex gap-1 overflow-x-auto whitespace-nowrap sm:overflow-auto">
+              {item.tags.map((item) => {
+                return <Tag item={item} />;
+              })}
             </div>
           </div>
-          <div className="border-gray-100-value my-4 flex w-40 flex-col items-end justify-end gap-2 border-l border-b-0 border-t-0 border-r-0 border-solid px-4">
+
+          {/* Price details */}
+          <div className="my-4 flex w-40 flex-none flex-col items-end justify-end gap-2 border-l border-b-0 border-t-0 border-r-0 border-solid border-gray-100 px-4">
             <div className="flex flex-col items-end gap-1">
-              <div className="text-title3 font-semibold">$500</div>
+              <div className="text-title3 font-semibold">${item.price}</div>
               <div className="text-caption1">Avg per night</div>
               <div className="text-caption1">Total $1000</div>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <button className="rounded-lg bg-gray-900 px-3 py-2 text-caption1 font-medium text-white">
+              <MyButton variant="secondary" size="small">
                 Choose room
-              </button>
+              </MyButton>
               <div className="text-caption2">Earn reward $50</div>
             </div>
           </div>

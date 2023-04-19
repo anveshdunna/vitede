@@ -26,7 +26,7 @@ import { useEffect } from "react";
 
 function Layout(props) {
   return (
-    <div className={`flex bg-gray-50 text-gray-900`}>
+    <div className={`flex bg-gray-80 text-gray-900`}>
       <NavContextProvider>
         <ScrollToTop>
           <GlobalNav />

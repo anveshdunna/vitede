@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 function SelectionNavItem({ expand }) {
   return (
-    <Link className="flex w-[280px] flex-col items-stretch gap-4 rounded-lg border border-solid border-gray-200 bg-white p-2 text-caption1 text-gray-900">
+    <Link className="flex w-[280px] flex-none flex-col items-stretch gap-4 rounded-lg border border-solid border-gray-200 bg-white p-2 text-caption1 text-gray-900">
       <div className="flex flex-col gap-1">
-        <div className="flex items-center font-medium">
-          <Icon name="help" color="currentColor" />
-          <span>Location 1</span>
-          <span>{`->`}</span>
-          <span>Location 2</span>
+        <div className="flex items-center font-medium text-gray-700">
+          <Icon name="vehicleFlightSmall" color="currentColor" />
+          <div className="ml-1">
+            <span>Location 1</span>
+            <span>{`->`}</span>
+            <span>Location 2</span>
+          </div>
         </div>
         <div className="text-gray-700">31 Jan</div>
         <div className="text-gray-700">

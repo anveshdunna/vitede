@@ -124,7 +124,7 @@ module.exports = {
         leftpanel: "1px 0px 2px 0px #1118271a, 4px 0px 8px 0px #11182726",
       },
       animation: {
-        recommendation: "recommendation 12s infinite",
+        recommendation: "recommendation 8s infinite",
       },
       keyframes: {
         recommendation: {

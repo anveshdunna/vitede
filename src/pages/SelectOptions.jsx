@@ -8,20 +8,8 @@ import SelectionNavItem from "../components/SelectionNavItem";
 import { useState, useEffect } from "react";
 import { useScroll } from "../contexts/ScrollContext";
 import Page from "./Page";
-
-function List(props) {
-  return (
-    <ul className="flex flex-col items-stretch gap-4">
-      <HotelCard recommended />
-      <HotelCard recommended />
-      {Array(15)
-        .fill("")
-        .map(function () {
-          return <HotelCard />;
-        })}
-    </ul>
-  );
-}
+import ProductList from "../components/ProductList";
+import MyButton from "../components/core/MyButton";
 
 function SelectOptions(props) {
   const { scrollDisabled, setScrollDisabled } = useScroll();
@@ -53,13 +41,13 @@ function SelectOptions(props) {
         changeExpand={changeExpandSelections}
         expand={expandSelections}
       >
-        <div className="flex gap-3">
+        <div className="flex w-[200px] gap-3 overflow-clip">
           <SelectionNavItem expand={expandSelections} />
           <SelectionNavItem expand={expandSelections} />
           <SelectionNavItem expand={expandSelections} />
           <SelectionNavItem expand={expandSelections} />
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-none items-center gap-4">
           <div className="flex flex-col gap-0">
             <div className="text-body1">
               Total <span className="font-semibold">$400</span>
@@ -69,36 +57,33 @@ function SelectOptions(props) {
               View selection
             </button>
           </div>
-          <button
-            onClick={changeExpandSelections}
-            className="rounded-lg bg-gray-900 px-4 py-4 text-white"
-          >
+          <MyButton onClick={changeExpandSelections} variant="secondary">
             Proceed
-          </button>
+          </MyButton>
         </div>
       </SelectionsBar>
       <div className="section">
         <div className="fixed-container">
-          <div className="mt-[108px] flex">
+          <div className="mt-[108px] grid w-full grid-cols-4">
             <div className="mx-4 hidden basis-1/4 pt-4 md:block">
-              <FlightFilters />
+              <HotelFilters />
             </div>
-            <div className="mx-4 flex basis-full flex-col pt-3 md:basis-3/4">
+            <div className="col-span-4 mx-4 flex basis-full flex-col pt-3 md:col-span-3">
               <div className="self-end text-caption1">
                 Fares expire in{" "}
                 <span className="font-medium text-yellow-500">9m 48s</span>
               </div>
-              <div className="my-4 flex justify-between text-body2">
+              <div className="my-4 flex flex-col-reverse justify-between text-body2 sm:flex-row">
                 <div>
                   Showing <span className="font-semibold">200</span> of{" "}
                   <span className="font-semibold">220</span> hotels
                 </div>
                 <div className="font-medium">Sort by Recommended</div>
               </div>
-              <List />
+              <ProductList />
+              <div className="mt-40">End of list</div>
             </div>
           </div>
-          Container
         </div>
       </div>
     </Page>
