@@ -1,6 +1,6 @@
 import { Button } from "antd";
 
-const MyButton = (props) => {
+const ILButton = (props) => {
   const { variant, size, children, ...restProps } = props;
 
   // Variants
@@ -43,4 +43,4 @@ const MyButton = (props) => {
   );
 };
 
-export default MyButton;
+export default ILButton;

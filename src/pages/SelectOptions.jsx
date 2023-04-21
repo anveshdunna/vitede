@@ -9,7 +9,9 @@ import { useState, useEffect } from "react";
 import { useScroll } from "../contexts/ScrollContext";
 import Page from "./Page";
 import ProductList from "../components/ProductList";
-import MyButton from "../components/core/MyButton";
+import ILButton from "../components/core/ILButton";
+import ILSelect from "../components/core/ILSelect";
+import { useNavigate } from "react-router-dom";
 
 function SelectOptions(props) {
   const { scrollDisabled, setScrollDisabled } = useScroll();
@@ -34,6 +36,8 @@ function SelectOptions(props) {
     };
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <Page>
       <TripSteps />
@@ -41,7 +45,7 @@ function SelectOptions(props) {
         changeExpand={changeExpandSelections}
         expand={expandSelections}
       >
-        <div className="flex w-[200px] gap-3 overflow-clip">
+        <div className="inline-flex gap-3 overflow-clip">
           <SelectionNavItem expand={expandSelections} />
           <SelectionNavItem expand={expandSelections} />
           <SelectionNavItem expand={expandSelections} />
@@ -52,14 +56,17 @@ function SelectOptions(props) {
             <div className="text-body1">
               Total <span className="font-semibold">$400</span>
             </div>
-            <div>{scrollDistance}</div>
+            {/* <div>{scrollDistance}</div> */}
             <button className="text-caption1" onClick={changeExpandSelections}>
               View selection
             </button>
           </div>
-          <MyButton onClick={changeExpandSelections} variant="secondary">
+          <ILButton
+            onClick={() => navigate("/travel/confirm-details")}
+            variant="secondary"
+          >
             Proceed
-          </MyButton>
+          </ILButton>
         </div>
       </SelectionsBar>
       <div className="section">
@@ -73,12 +80,39 @@ function SelectOptions(props) {
                 Fares expire in{" "}
                 <span className="font-medium text-yellow-500">9m 48s</span>
               </div>
-              <div className="my-4 flex flex-col-reverse justify-between text-body2 sm:flex-row">
+              <div className="my-4 flex flex-col-reverse items-center justify-between text-body2 sm:flex-row">
                 <div>
                   Showing <span className="font-semibold">200</span> of{" "}
                   <span className="font-semibold">220</span> hotels
                 </div>
-                <div className="font-medium">Sort by Recommended</div>
+                <div>
+                  <span className="mr-1 font-medium">Sort by</span>
+                  <ILSelect
+                    defaultValue="lucy"
+                    style={{
+                      width: 120,
+                    }}
+                    options={[
+                      {
+                        value: "jack",
+                        label: "Jack",
+                      },
+                      {
+                        value: "lucy",
+                        label: "Lucy",
+                      },
+                      {
+                        value: "Yiminghe",
+                        label: "yiminghe",
+                      },
+                      {
+                        value: "disabled",
+                        label: "Disabled",
+                        disabled: true,
+                      },
+                    ]}
+                  />
+                </div>
               </div>
               <ProductList />
               <div className="mt-40">End of list</div>

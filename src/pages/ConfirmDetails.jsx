@@ -5,7 +5,7 @@ import TripCard from "../components/TripCard";
 import TripSteps from "../components/TripSteps";
 import Page from "./Page";
 
-function CreateTrip() {
+function ConfirmDetails() {
   const navigate = useNavigate();
   return (
     <Page>
@@ -22,7 +22,7 @@ function CreateTrip() {
                 );
               })}
 
-            <button
+            {/* <button
               onClick={() => navigate("/travel/select-options")}
               className="rounded-lg bg-gray-900 px-4 py-4 text-white"
             >
@@ -35,7 +35,7 @@ function CreateTrip() {
               }}
             >
               go to top
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -43,4 +43,4 @@ function CreateTrip() {
   );
 }
 
-export default CreateTrip;
+export default ConfirmDetails;

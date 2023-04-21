@@ -18,7 +18,8 @@ export const NavContextProvider = ({ children }) => {
     path1 === "help" ||
     path1 === "notifications" ||
     path2 === "create-trip" ||
-    path2 === "select-options"
+    path2 === "select-options" ||
+    path2 === "confirm-details"
   ) {
     pnavOpen = false;
   } else {

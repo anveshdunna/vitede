@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       white: "#ffffff",
       black: "#000000",
+      transparent: "transparent",
       gray: {
         50: "#f9fafb",
         80: "#f1f3f5",
@@ -108,6 +109,9 @@ module.exports = {
       // => @media (min-width: 1600px) { ... }
     },
     extend: {
+      borderRadius: {
+        smol: "0.25rem",
+      },
       fontSize: {
         largetitle: ["2.125rem", "2.625rem"],
         title1: ["1.75rem", "2.125rem"],

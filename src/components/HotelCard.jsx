@@ -4,7 +4,7 @@ import Recommendation from "./Recommendation";
 import Tag from "./Tag";
 import { Link } from "react-router-dom";
 import { useNav } from "../contexts/NavContext";
-import MyButton from "./core/MyButton";
+import ILButton from "./core/ILButton";
 
 const HotelTitle = ({ item }) => {
   return (
@@ -137,9 +137,9 @@ function HotelCard({ item }) {
               <div className="text-caption1">Total $1000</div>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <MyButton variant="secondary" size="small">
+              <ILButton variant="secondary" size="small">
                 Choose room
-              </MyButton>
+              </ILButton>
               <div className="text-caption2">Earn reward $50</div>
             </div>
           </div>

@@ -23,10 +23,11 @@ import GlobalNav from "./components/GlobalNav";
 import ScrollToTop from "./components/ScrollToTop";
 import { useState } from "react";
 import { useEffect } from "react";
+import ConfirmDetails from "./pages/ConfirmDetails";
 
 function Layout(props) {
   return (
-    <div className={`flex bg-gray-80 text-gray-900`}>
+    <div className={`flex text-gray-900`}>
       <NavContextProvider>
         <ScrollToTop>
           <GlobalNav />
@@ -51,6 +52,7 @@ function App() {
             <Route path="travel/approvals" element={<Approvals />} />
             <Route path="travel/create-trip" element={<CreateTrip />} />
             <Route path="travel/select-options" element={<SelectOptions />} />
+            <Route path="travel/confirm-details" element={<ConfirmDetails />} />
             <Route path="expense/overview" element={<ExpenseHome />} />
             <Route path="expense/expenses" element={<ExpenseHome />} />
             <Route path="expense/reports" element={<ExpenseHome />} />

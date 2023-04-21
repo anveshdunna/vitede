@@ -15,7 +15,17 @@
   background-color: #f1f3f5;
 }
 
-/* F1F3F5  #f9fafb*/
+input[type="checkbox"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+}
+
+/* F1F3F5  #f9fafb #FBF5EF*/
 
 @layer components {
   /* .page {
