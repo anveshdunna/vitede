@@ -20,6 +20,12 @@ function Tag({ item }) {
       label = "Quality unclear";
       link = "https://google.com/";
       break;
+    case "eco":
+      label = "Economy";
+      break;
+    case "preeco":
+      label = "Premium economy";
+      break;
     default:
       icon = "vehicleTrainSmall";
       label = "No label";
@@ -28,7 +34,7 @@ function Tag({ item }) {
   return (
     <>
       {link ? (
-        <button className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 py-1 px-2 text-caption1 font-medium underline">
+        <button className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium underline">
           {icon && (
             <span className="-ml-1">
               <Icon name={icon} color="currentColor" />
@@ -37,7 +43,7 @@ function Tag({ item }) {
           {label}
         </button>
       ) : (
-        <div className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 py-1 px-2 text-caption1 font-medium">
+        <div className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium">
           {icon && (
             <span className="-ml-1">
               <Icon name={icon} color="currentColor" />

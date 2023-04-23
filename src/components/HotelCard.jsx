@@ -5,28 +5,28 @@ import Tag from "./Tag";
 import { Link } from "react-router-dom";
 import { useNav } from "../contexts/NavContext";
 import ILButton from "./core/ILButton";
+import { useSelection } from "../contexts/SelectionContext";
 
 const HotelTitle = ({ item }) => {
   return (
     <div className="flex flex-col gap-1">
       <div className="flex gap-0.5 text-white sm:text-gray-700">
-        {Array(item.starRating)
-          .fill(null)
-          .map(function () {
-            return (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-              >
-                <path
-                  fill="currentColor"
-                  d="M3.6 4 4.717.809a.3.3 0 0 1 .566 0L6.4 4h2.655a.3.3 0 0 1 .173.545L7.113 6.038 8.19 9.115a.3.3 0 0 1-.456.344L5 7.53 2.266 9.46a.3.3 0 0 1-.456-.344l1.077-3.077L.772 4.545A.3.3 0 0 1 .945 4H3.6Z"
-                />
-              </svg>
-            );
-          })}
+        {[...Array(item.starRating)].map((x, i) => {
+          return (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              key={i}
+            >
+              <path
+                fill="currentColor"
+                d="M3.6 4 4.717.809a.3.3 0 0 1 .566 0L6.4 4h2.655a.3.3 0 0 1 .173.545L7.113 6.038 8.19 9.115a.3.3 0 0 1-.456.344L5 7.53 2.266 9.46a.3.3 0 0 1-.456-.344l1.077-3.077L.772 4.545A.3.3 0 0 1 .945 4H3.6Z"
+              />
+            </svg>
+          );
+        })}
       </div>
       <div className="text-body1 font-semibold text-white sm:truncate sm:text-gray-900">
         {item.name}
@@ -38,7 +38,7 @@ const HotelTitle = ({ item }) => {
 const HotelRating = ({ item }) => {
   return (
     <div className="relative -top-[3px] flex flex-none flex-col items-end text-caption1">
-      <div className="mb-0.5 rounded-t-md rounded-br-md border border-solid border-white/40 bg-green-500 py-0.5 px-2 text-body2 font-semibold text-white sm:border-none">
+      <div className="mb-0.5 rounded-t-md rounded-br-md border border-solid border-white/40 bg-green-500 px-2 py-0.5 text-body2 font-semibold text-white sm:border-none">
         {item.userRating}
         <span className="font-regular text-caption2 text-white/60">/5</span>
       </div>
@@ -56,25 +56,25 @@ const HotelPoints = ({ item }) => {
   return (
     <div>
       {/* Hotel address */}
-      <div className="mb-1 grid grid-cols-[auto_auto_auto_1fr] text-caption1 text-gray-700">
+      <div className="mb-1.5 grid grid-cols-[auto_auto_auto_1fr] text-caption1 text-gray-500">
         <Icon name="locationSmall" color="currentColor" />
-        <div className="ml-1">{item.distance} km from search location</div>
-        <div className="mx-1">·</div>
-        <a href="https://google.com" className="mr-3 truncate underline">
+        <div className="ml-2 text-gray-700">
+          {item.distance} km from search location
+        </div>
+        <div className="mx-1 font-medium text-gray-700">·</div>
+        <a
+          href="https://google.com"
+          className="mr-3 truncate text-gray-700 underline"
+        >
           {item.address}
         </a>
       </div>
 
       {/* Rest of the points */}
-      <div className="flex flex-col gap-1">
-        {item.points.map((item) => {
-          return <Point item={item} />;
+      <div className="flex flex-col gap-1.5">
+        {item.points.map((item, index) => {
+          return <Point item={item} key={index} />;
         })}
-        {/* <ListItem>Earn loyalty Lists</ListItem>
-        <ListItem>Breakfast included</ListItem>
-        <ListItem>
-          <a href="https://google.com">Cancellation policy</a>
-        </ListItem> */}
       </div>
     </div>
   );
@@ -82,13 +82,14 @@ const HotelPoints = ({ item }) => {
 
 function HotelCard({ item }) {
   const { screenWidth } = useNav();
+  const { selectedHotel, changeSelectedHotel } = useSelection();
   return (
     <li className="mb-4">
       <div className="relative z-[1] overflow-hidden rounded-xl bg-white no-underline outline outline-1 outline-offset-[-1px] outline-gray-900/20">
         {item.recommended && <Recommendation />}
         <div className="flex flex-col sm:flex-row">
           {/* Hotel image box */}
-          <div className="relative h-40 w-full flex-none overflow-clip sm:h-48 sm:w-48">
+          <div className="relative h-40 w-full flex-none overflow-clip sm:h-[200px] sm:w-[200px]">
             <img
               className="h-full w-full object-cover"
               alt=""
@@ -123,21 +124,28 @@ function HotelCard({ item }) {
 
             {/* Tags */}
             <div className="inline-flex gap-1 overflow-x-auto whitespace-nowrap sm:overflow-auto">
-              {item.tags.map((item) => {
-                return <Tag item={item} />;
+              {item.tags.map((item, index) => {
+                return <Tag item={item} key={index} />;
               })}
             </div>
           </div>
 
           {/* Price details */}
-          <div className="my-4 flex w-40 flex-none flex-col items-end justify-end gap-2 border-l border-b-0 border-t-0 border-r-0 border-solid border-gray-100 px-4">
-            <div className="flex flex-col items-end gap-1">
+          <div className="my-4 flex w-40 flex-none flex-col items-end justify-between gap-2 border-b-0 border-l border-r-0 border-t-0 border-solid border-gray-100 px-4">
+            <div className="flex flex-col items-end gap-0.5">
               <div className="text-title3 font-semibold">${item.price}</div>
-              <div className="text-caption1">Avg per night</div>
-              <div className="text-caption1">Total $1000</div>
+              <div className="text-caption1 text-gray-500">Avg per night</div>
+              <div className="text-caption1 text-gray-500">Total $1000</div>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <ILButton variant="secondary" size="small">
+              <ILButton
+                variant="secondary"
+                size="small"
+                onClick={() => {
+                  changeSelectedHotel(item);
+                  console.log(item);
+                }}
+              >
                 Choose room
               </ILButton>
               <div className="text-caption2">Earn reward $50</div>

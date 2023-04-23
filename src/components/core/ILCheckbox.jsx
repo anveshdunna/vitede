@@ -20,7 +20,7 @@ const ILCheckbox = (props) => {
             ? "border-orange-500 bg-orange-500 text-white group-hover:border-orange-600 group-hover:bg-orange-600"
             : "border-gray-300 bg-white text-transparent group-hover:border-gray-500"
         }`}
-        ariaHidden="true"
+        aria-hidden="true"
         fill="none"
         viewBox="0 0 16 16"
         strokeWidth={2}

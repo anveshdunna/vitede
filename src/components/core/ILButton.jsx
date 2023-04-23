@@ -16,9 +16,9 @@ const ILButton = (props) => {
 
   // Definitions
   const backgroundColor = isPrimary
-    ? "bg-orange-500"
+    ? "bg-orange-500 hover:bg-orange-600 active:bg-orange-700"
     : isSecondary
-    ? "bg-gray-900"
+    ? "bg-gray-800 hover:bg-gray-900 active:bg-gray-800"
     : isDestructive
     ? "bg-red-500"
     : "bg-white";
@@ -34,12 +34,12 @@ const ILButton = (props) => {
     : "px-4 py-2.5 h-10 text-body2";
 
   return (
-    <Button
+    <button
       className={`inline-flex items-center rounded-lg ${backgroundColor} ${textColor} ${buttonSize} min-w-[5rem] align-middle font-['Inter'] font-medium`}
       {...restProps}
     >
       {children}
-    </Button>
+    </button>
   );
 };
 

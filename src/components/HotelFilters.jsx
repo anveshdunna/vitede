@@ -8,32 +8,32 @@ function HotelFilters() {
         <div className="text-body1 font-semibold">Filters</div>
         <RecommendedToggle />
         <div className="flex flex-col gap-2">
-          {commonHotelFilters.map((item) => (
-            <ILCheckbox>{item}</ILCheckbox>
+          {commonHotelFilters.map((item, index) => (
+            <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </div>
         <div className="flex flex-col gap-2">
           <div className="text-body2 font-medium text-gray-700">
             Star rating
           </div>
-          {commonHotelFilters.map((item) => (
-            <ILCheckbox>{item}</ILCheckbox>
+          {commonHotelFilters.map((item, index) => (
+            <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </div>
         <div className="flex flex-col gap-2">
           <div className="text-body2 font-medium text-gray-700">
             Guest rating
           </div>
-          {commonHotelFilters.map((item) => (
-            <ILCheckbox>{item}</ILCheckbox>
+          {commonHotelFilters.map((item, index) => (
+            <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </div>
         <div className="flex flex-col gap-2">
           <div className="text-body2 font-medium text-gray-700">
             Loyalty chains
           </div>
-          {loyaltyChains.map((item) => (
-            <ILCheckbox>{item}</ILCheckbox>
+          {loyaltyChains.map((item, index) => (
+            <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </div>
       </div>

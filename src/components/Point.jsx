@@ -3,19 +3,21 @@ import Icon from "../assets/Icon";
 function Point({ item }) {
   let icon;
   let label;
+  let color;
   let link;
 
   switch (item) {
     case "loyalty":
-      icon = "sparkleSmall";
+      icon = "loyaltySmall";
       label = "Earn loyalty points";
+      color = "text-orange-500";
       break;
     case "breakfast":
-      icon = "locationSmall";
+      icon = "coffeeSmall";
       label = "Breakfast included";
       break;
     case "cancellation":
-      icon = "vehicleCarSmall";
+      icon = "clipboardBulletsSmall";
       label = "Cancellation policy";
       link = "https://google.com";
       break;
@@ -25,14 +27,18 @@ function Point({ item }) {
   }
 
   return (
-    <div className="flex items-center gap-1 text-caption1 text-gray-700">
+    <div
+      className={`flex items-center gap-2 text-caption1 ${
+        color ? color : `text-gray-500`
+      }`}
+    >
       <Icon name={icon} color="currentColor" />
       {link ? (
-        <a href={link} className="underline">
+        <a href={link} className="text-gray-700 underline">
           {label}
         </a>
       ) : (
-        label
+        <span className="text-gray-700">{label}</span>
       )}
     </div>
   );

@@ -1,12 +1,16 @@
-import { hotelsData } from "../data/hotelsData";
 import HotelCard from "./HotelCard";
+import FlightCard from "./FlightCard";
 
-function ProductList(props) {
+function ProductList({ data, travelMode }) {
   return (
     <ul className="w-full">
-      {hotelsData.map((item) => (
-        <HotelCard item={item} />
-      ))}
+      {data.map((item) =>
+        travelMode === "flight" ? (
+          <FlightCard item={item} key={item.key} />
+        ) : (
+          <HotelCard item={item} key={item.key} />
+        )
+      )}
     </ul>
   );
 }

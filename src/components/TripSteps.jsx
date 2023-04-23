@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function TripStep({ label, active, completed, pending, onClick, key }) {
+function TripStep({ label, active, completed, pending, onClick }) {
   return (
     <button
       className={`flex flex-row items-center gap-1 rounded-full p-1 pr-2 text-body2 font-medium ${
@@ -33,7 +33,7 @@ function TripStep({ label, active, completed, pending, onClick, key }) {
         )}
         {completed && (
           <svg
-            ariaHidden="true"
+            aria-hidden="true"
             fill="none"
             viewBox="0 0 16 16"
             strokeWidth={2}

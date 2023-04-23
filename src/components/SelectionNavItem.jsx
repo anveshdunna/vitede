@@ -1,21 +1,67 @@
 import Icon from "../assets/Icon";
-import { Link } from "react-router-dom";
+import { useSelection } from "../contexts/SelectionContext";
 
-function SelectionNavItem({ expand }) {
+let icon, item;
+
+function SelectionNavItem({ expand, item, selected, active, onClick }) {
+  const { selectedHotel, selectedFlight } = useSelection();
   return (
-    <Link className="flex w-[280px] flex-none flex-col items-stretch gap-4 rounded-lg border border-solid border-gray-200 bg-white p-2 text-caption1 text-gray-900">
+    <div
+      className={`flex w-[280px] flex-none flex-col items-stretch gap-4 rounded-lg border border-solid ${
+        active ? `border-orange-500` : `border-gray-200`
+      } cursor-pointer bg-white p-2 text-caption1 text-gray-900`}
+      tabIndex={0}
+      onClick={onClick}
+    >
       <div className="flex flex-col gap-1">
-        <div className="flex items-center font-medium text-gray-700">
-          <Icon name="vehicleFlightSmall" color="currentColor" />
-          <div className="ml-1">
-            <span>Location 1</span>
-            <span>{`->`}</span>
-            <span>Location 2</span>
-          </div>
+        {/* Locations */}
+        <div className="flex items-center gap-1 font-medium text-gray-700">
+          <Icon
+            name={checkIcon(item.travelMode)}
+            color="currentColor"
+            className="text-orange-500"
+          />
+          {item.travelMode === "flight" && (
+            <>
+              <span>{item.fromLocation}</span>
+              <span>
+                <Icon
+                  name="arrowRightAltSmall"
+                  color="currentColor"
+                  className="text-gray-500"
+                />
+              </span>
+              <span>{item.toLocation}</span>
+            </>
+          )}
+          {item.travelMode === "hotel" && <span>{item.location}</span>}
         </div>
-        <div className="text-gray-700">31 Jan</div>
-        <div className="text-gray-700">
-          <span>Delta, DL 1234</span>
+
+        {/* Dates */}
+        <div className="ml-5 text-gray-700">{item.date}</div>
+
+        {/* Selection */}
+        <div className="ml-5 truncate">
+          {item.travelMode === "flight" ? (
+            selectedFlight ? (
+              <span className="text-gray-700">{selectedFlight.name}</span>
+            ) : (
+              <span className="text-gray-500">Not selected</span>
+            )
+          ) : selectedHotel ? (
+            <span className="text-gray-700">{selectedHotel.name}</span>
+          ) : (
+            <span className="text-gray-500">Not selected</span>
+          )}
+          {/* {selected ? (
+            <span className="text-gray-700">
+              Delta, DL1234 {selectedHotel && selectedHotel.name}
+            </span>
+          ) : (
+            <span className="text-gray-500">
+              Not selected {selectedHotel && selectedHotel.name}
+            </span>
+          )} */}
         </div>
       </div>
       {expand && (
@@ -47,8 +93,19 @@ function SelectionNavItem({ expand }) {
           <button className="self-start">Change selection</button>
         </>
       )}
-    </Link>
+    </div>
   );
 }
+
+const checkIcon = (a) => {
+  switch (a) {
+    case "flight":
+      return "vehicleFlightSmall";
+    case "hotel":
+      return "vehicleCarSmall";
+    default:
+      return "vehicleFlightSmall";
+  }
+};
 
 export default SelectionNavItem;
