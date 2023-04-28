@@ -36,9 +36,20 @@ const HotelTitle = ({ item }) => {
 };
 
 const HotelRating = ({ item }) => {
+  const { userRating } = item;
+  let ratingBackground;
+  ratingBackground =
+    userRating > 4
+      ? "bg-green-500"
+      : userRating > 3 && userRating <= 4
+      ? "bg-yellow-400"
+      : "bg-red-500";
+
   return (
     <div className="relative -top-[3px] flex flex-none flex-col items-end text-caption1">
-      <div className="mb-0.5 rounded-t-md rounded-br-md border border-solid border-white/40 bg-green-500 px-2 py-0.5 text-body2 font-semibold text-white sm:border-none">
+      <div
+        className={`mb-0.5 rounded-t-md rounded-br-md border border-solid border-white/40 ${ratingBackground} px-2 py-0.5 text-body2 font-semibold text-white sm:border-none`}
+      >
         {item.userRating}
         <span className="font-regular text-caption2 text-white/60">/5</span>
       </div>
@@ -64,7 +75,7 @@ const HotelPoints = ({ item }) => {
         <div className="mx-1 font-medium text-gray-700">·</div>
         <a
           href="https://google.com"
-          className="mr-3 truncate text-gray-700 underline"
+          className="mr-3 truncate text-gray-700 underline decoration-gray-300"
         >
           {item.address}
         </a>

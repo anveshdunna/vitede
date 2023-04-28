@@ -1,7 +1,9 @@
 import Icon from "../assets/Icon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSelection } from "../contexts/SelectionContext";
+import ILSkeleton from "./core/ILSkeleton";
 
 function TripStep({ label, active, completed, pending, onClick }) {
   return (
@@ -66,16 +68,20 @@ function TripSteps({ sticky }) {
   const navigate = useNavigate();
   const location = useLocation().pathname.split("/")[2];
   let initialIndex;
+  let initialIdLoaded;
 
   switch (location) {
     case "create-trip":
       initialIndex = 0;
+      initialIdLoaded = false;
       break;
     case "select-options":
       initialIndex = 1;
+      initialIdLoaded = false;
       break;
     case "confirm-details":
       initialIndex = 2;
+      initialIdLoaded = true;
       break;
     default:
       initialIndex = 0;
@@ -86,12 +92,46 @@ function TripSteps({ sticky }) {
     setCurrentStep(index);
   };
 
+  const [idLoaded, setIdLoaded] = useState(initialIdLoaded);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIdLoaded(true);
+    }, 2000);
+  }, []);
+
   return (
     <div
-      className={`flex grow justify-center gap-4 border-b border-solid border-gray-200 bg-white px-4 py-1 ${
+      className={`relative flex grow items-center justify-center gap-4 border-b border-solid border-gray-200 bg-white px-4 py-1 ${
         sticky ? `sticky top-0` : ``
       }`}
     >
+      <div className="absolute left-0 ml-10 flex flex-row items-center gap-3">
+        <button className="rounded-lg p-1 text-gray-500 hover:bg-gray-80">
+          <Icon name="crossSmall" color="currentColor" />
+        </button>
+        {currentStep !== 0 && (
+          <>
+            <span className="w-px self-stretch bg-gray-100"></span>
+            <AnimatePresence mode="wait">
+              {idLoaded ? (
+                <motion.span
+                  className="text-caption1 text-gray-700"
+                  key="loaded"
+                  initial={{ opacity: idLoaded ? 1 : 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  {`Trip ID: `}
+                  <span className="text-body2 font-semibold">1000-1234</span>
+                </motion.span>
+              ) : (
+                <ILSkeleton height="5" width="28" />
+              )}
+            </AnimatePresence>
+          </>
+        )}
+      </div>
+
       {tripSteps.map((item, index) => {
         return (
           <TripStep

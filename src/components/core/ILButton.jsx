@@ -16,9 +16,9 @@ const ILButton = (props) => {
 
   // Definitions
   const backgroundColor = isPrimary
-    ? "bg-orange-500 hover:bg-orange-600 active:bg-orange-700"
+    ? "bg-orange-500 hover:bg-orange-600 active:bg-orange-600"
     : isSecondary
-    ? "bg-gray-800 hover:bg-gray-900 active:bg-gray-800"
+    ? "bg-gray-900 hover:bg-black active:bg-black"
     : isDestructive
     ? "bg-red-500"
     : "bg-white";

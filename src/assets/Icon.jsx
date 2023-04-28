@@ -3,6 +3,7 @@ const IconMap = {
   arrowRightLeftSmall: ArrowRightLeftSmall,
   clipboardBulletsSmall: ClipboardBulletsSmall,
   coffeeSmall: CoffeeSmall,
+  crossSmall: CrossSmall,
   expense: Expense,
   expenseFilled: ExpenseFilled,
   help: Help,
@@ -55,6 +56,15 @@ function ArrowRightLeftSmall(props) {
   );
 }
 
+function ClipboardBulletsSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M7 7.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm0 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM5.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm0 3a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-.415-9A1.5 1.5 0 0 1 6.5 1h3a1.5 1.5 0 0 1 1.415 1h.585A1.5 1.5 0 0 1 13 3.5v10a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-10A1.5 1.5 0 0 1 4.5 2h.585ZM6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3ZM5.085 3H4.5a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5h-.585A1.5 1.5 0 0 1 9.5 4h-3a1.5 1.5 0 0 1-1.415-1Z"
+    ></path>
+  );
+}
+
 function CoffeeSmall(props) {
   return (
     <path
@@ -64,11 +74,11 @@ function CoffeeSmall(props) {
   );
 }
 
-function ClipboardBulletsSmall(props) {
+function CrossSmall(props) {
   return (
     <path
       fill={props.color}
-      d="M7 7.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm0 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM5.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm0 3a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-.415-9A1.5 1.5 0 0 1 6.5 1h3a1.5 1.5 0 0 1 1.415 1h.585A1.5 1.5 0 0 1 13 3.5v10a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-10A1.5 1.5 0 0 1 4.5 2h.585ZM6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3ZM5.085 3H4.5a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5h-.585A1.5 1.5 0 0 1 9.5 4h-3a1.5 1.5 0 0 1-1.415-1Z"
+      d="m2.589 2.716.057-.07a.5.5 0 0 1 .638-.057l.07.057L8 7.293l4.646-4.647a.5.5 0 0 1 .708.708L8.707 8l4.647 4.646a.5.5 0 0 1 .057.638l-.057.07a.5.5 0 0 1-.638.057l-.07-.057L8 8.707l-4.646 4.647a.5.5 0 0 1-.708-.708L7.293 8 2.646 3.354a.5.5 0 0 1-.057-.638l.057-.07-.057.07Z"
     ></path>
   );
 }

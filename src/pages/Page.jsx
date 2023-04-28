@@ -5,7 +5,7 @@ function Page({ children }) {
   return (
     <div
       className={`flex h-fit flex-1 flex-col items-stretch ${
-        pnavOpen ? `md:ml-[280px]` : `md:ml-16`
+        pnavOpen ? `md:ml-[17.5rem]` : `md:ml-16`
       }`}
       id="page"
     >

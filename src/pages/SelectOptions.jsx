@@ -47,6 +47,8 @@ function SelectOptions(props) {
     setCurrentLeg(index);
   };
 
+  // Transitions
+
   return (
     <SelectionContextProvider>
       <Page>

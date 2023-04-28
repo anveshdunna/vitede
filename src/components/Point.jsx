@@ -34,7 +34,7 @@ function Point({ item }) {
     >
       <Icon name={icon} color="currentColor" />
       {link ? (
-        <a href={link} className="text-gray-700 underline">
+        <a href={link} className="text-gray-700 underline decoration-gray-300">
           {label}
         </a>
       ) : (

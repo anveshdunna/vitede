@@ -7,7 +7,7 @@ function SelectionNavItem({ expand, item, selected, active, onClick }) {
   const { selectedHotel, selectedFlight } = useSelection();
   return (
     <div
-      className={`flex w-[280px] flex-none flex-col items-stretch gap-4 rounded-lg border border-solid ${
+      className={`flex w-[17.5rem] flex-none flex-col items-stretch gap-4 rounded-lg border border-solid ${
         active ? `border-orange-500` : `border-gray-200`
       } cursor-pointer bg-white p-2 text-caption1 text-gray-900`}
       tabIndex={0}
@@ -19,7 +19,7 @@ function SelectionNavItem({ expand, item, selected, active, onClick }) {
           <Icon
             name={checkIcon(item.travelMode)}
             color="currentColor"
-            className="text-orange-500"
+            className="mr-1 text-orange-500"
           />
           {item.travelMode === "flight" && (
             <>
@@ -38,10 +38,10 @@ function SelectionNavItem({ expand, item, selected, active, onClick }) {
         </div>
 
         {/* Dates */}
-        <div className="ml-5 text-gray-700">{item.date}</div>
+        <div className="ml-6 text-gray-700">{item.date}</div>
 
         {/* Selection */}
-        <div className="ml-5 truncate">
+        <div className="ml-6 truncate">
           {item.travelMode === "flight" ? (
             selectedFlight ? (
               <span className="text-gray-700">{selectedFlight.name}</span>

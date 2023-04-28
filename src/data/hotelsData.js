@@ -81,7 +81,7 @@ export const hotelsData = [
     starRating: 3,
     distance: 0.8,
     address: "LAX Area, Los Angeles",
-    userRating: 3.6,
+    userRating: 2.9,
     userReviewCount: 35,
     price: 1000,
     reward: 50,

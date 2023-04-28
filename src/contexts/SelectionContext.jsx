@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 export const SelectionContext = createContext();
 
@@ -14,6 +14,8 @@ const SelectionContextProvider = ({ children }) => {
   };
 
   const [selectedObjects, setSelectedObjects] = useState([]);
+
+  // Loading states
 
   const value = {
     selectedHotel,

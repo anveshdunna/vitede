@@ -109,6 +109,9 @@ module.exports = {
       // => @media (min-width: 1600px) { ... }
     },
     extend: {
+      backgroundSize: {
+        double: "200%",
+      },
       borderRadius: {
         smol: "0.25rem",
       },
@@ -129,6 +132,7 @@ module.exports = {
       },
       animation: {
         recommendation: "recommendation 8s infinite",
+        shimmerbg: "shimmerbg linear 2s infinite",
       },
       keyframes: {
         recommendation: {
@@ -143,6 +147,19 @@ module.exports = {
           },
           "100%": {
             transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
+        shimmerbg: {
+          "0%": {
+            backgroundPosition: "100%",
+          },
+          "100%": {
+            backgroundPosition: "-100%",
           },
         },
       },

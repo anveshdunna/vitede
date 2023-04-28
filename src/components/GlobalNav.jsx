@@ -12,7 +12,7 @@ function ProductNavItem({ item }) {
     <NavLink
       to={item.path}
       className={({ isActive }) =>
-        `rounded-lg py-2 px-2 text-body2 font-medium no-underline transition duration-100 ${
+        `rounded-lg px-2 py-2 text-body2 font-medium no-underline transition duration-100 ${
           isActive
             ? `bg-orange-50 text-gray-900`
             : `text-gray-700 hover:bg-gray-80 active:bg-gray-100	`
@@ -38,7 +38,7 @@ function GlobalNavItem({ item, setIndex }) {
         setIndex && setIndex(item.id);
         screenWidth <= 1200 && changeNavOpen();
       }}
-      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 px-2 text-caption2 font-medium no-underline transition duration-100 ${
+      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-2 text-caption2 font-medium no-underline transition duration-100 ${
         isActive
           ? `bg-orange-50 text-gray-900`
           : `text-gray-700 hover:bg-gray-80 active:bg-gray-100`
@@ -89,10 +89,10 @@ function GlobalNav() {
           )}
           <div
             className={`fixed ${
-              navOpen ? `left-0 shadow-leftpanel` : `-left-[280px]`
+              navOpen ? `left-0 shadow-leftpanel` : `-left-[17.5rem]`
             } flex h-screen flex-row border-r border-solid border-gray-200 bg-white transition-[left] md:sticky md:left-0 md:top-0 md:shadow-none`}
           >
-            <nav className="flex w-16 flex-col justify-between py-2 px-1">
+            <nav className="flex w-16 flex-col justify-between px-1 py-2">
               <div className="flex flex-col items-stretch">
                 <Link
                   to="/"
