@@ -15,6 +15,14 @@
   background-color: #f1f3f5;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
 input[type="checkbox"] {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

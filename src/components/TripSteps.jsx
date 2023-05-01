@@ -5,20 +5,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useSelection } from "../contexts/SelectionContext";
 import ILSkeleton from "./core/ILSkeleton";
 
-function TripStep({ label, active, completed, pending, onClick }) {
+function TripStep({
+  label,
+  active,
+  completed,
+  penultimate,
+  incomplete,
+  onClick,
+}) {
   return (
     <button
-      className={`flex flex-row items-center gap-1 rounded-full p-1 pr-2 text-body2 font-medium ${
-        pending ? `` : `hover:bg-gray-80`
+      className={`z-10 flex flex-row items-center gap-1 rounded-full bg-white p-1 pr-2 text-body2 font-medium ${
+        !incomplete && `hover:bg-gray-80`
       } ${
         active
           ? `text-orange-500`
           : completed
-          ? `text-gray-700`
-          : `text-gray-500`
+          ? ` text-gray-700`
+          : `text-gray-400`
       }`}
       onClick={onClick}
-      disabled={pending}
+      disabled={incomplete}
     >
       <div className="relative flex h-5 w-5 items-center justify-center">
         <div
@@ -26,7 +33,7 @@ function TripStep({ label, active, completed, pending, onClick }) {
             active
               ? `border-orange-500 bg-white`
               : completed
-              ? `border-gray-300 bg-gray-300`
+              ? `border-orange-50 bg-orange-50`
               : `border-gray-200 bg-white`
           }`}
         ></div>
@@ -40,14 +47,22 @@ function TripStep({ label, active, completed, pending, onClick }) {
             viewBox="0 0 16 16"
             strokeWidth={2}
             stroke="currentColor"
-            className="absolute h-4 w-4 text-white"
+            className="absolute h-4 w-4 text-orange-500"
           >
             <motion.path
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
+              initial={{
+                pathLength: penultimate ? 1 : 0,
+                opacity: penultimate ? 1 : 0,
+              }}
+              animate={{ pathLength: 1, opacity: 1 }}
               transition={{
-                delay: 0.5,
-                duration: 0.075,
+                opacity: {
+                  duration: 0.2,
+                },
+                pathLength: {
+                  duration: 0.075,
+                  delay: 0.2,
+                },
                 type: "tween",
                 ease: "easeOut",
               }}
@@ -58,7 +73,6 @@ function TripStep({ label, active, completed, pending, onClick }) {
           </svg>
         )}
       </div>
-
       {label}
     </button>
   );
@@ -67,45 +81,52 @@ function TripStep({ label, active, completed, pending, onClick }) {
 function TripSteps({ sticky }) {
   const navigate = useNavigate();
   const location = useLocation().pathname.split("/")[2];
-  let initialIndex;
+  let initialStep;
   let initialIdLoaded;
+  let fromWidth, toWidth;
 
   switch (location) {
     case "create-trip":
-      initialIndex = 0;
+      initialStep = 0;
       initialIdLoaded = false;
+      fromWidth = "0%";
+      toWidth = "0%";
       break;
     case "select-options":
-      initialIndex = 1;
+      initialStep = 1;
       initialIdLoaded = false;
+      fromWidth = "0%";
+      toWidth = "50%";
       break;
     case "confirm-details":
-      initialIndex = 2;
+      initialStep = 2;
       initialIdLoaded = true;
+      fromWidth = "50%";
+      toWidth = "100%";
       break;
     default:
-      initialIndex = 0;
+      initialStep = 0;
   }
 
-  const [currentStep, setCurrentStep] = useState(initialIndex);
+  const [currentStep, setCurrentStep] = useState(initialStep);
   const changeCurrentStep = (index) => {
     setCurrentStep(index);
   };
 
   const [idLoaded, setIdLoaded] = useState(initialIdLoaded);
-
   useEffect(() => {
     setTimeout(() => {
       setIdLoaded(true);
-    }, 2000);
+    }, 3000);
   }, []);
 
   return (
     <div
-      className={`relative flex grow items-center justify-center gap-4 border-b border-solid border-gray-200 bg-white px-4 py-1 ${
+      className={`relative flex grow items-center justify-center border-b border-solid border-gray-200 bg-white px-4 py-1 ${
         sticky ? `sticky top-0` : ``
       }`}
     >
+      {/* Trip id */}
       <div className="absolute left-0 ml-10 flex flex-row items-center gap-3">
         <button className="rounded-lg p-1 text-gray-500 hover:bg-gray-80">
           <Icon name="crossSmall" color="currentColor" />
@@ -125,28 +146,45 @@ function TripSteps({ sticky }) {
                   <span className="text-body2 font-semibold">1000-1234</span>
                 </motion.span>
               ) : (
-                <ILSkeleton height="5" width="28" />
+                <ILSkeleton width="w-24" height="h-2" />
               )}
             </AnimatePresence>
           </>
         )}
       </div>
 
-      {tripSteps.map((item, index) => {
-        return (
-          <TripStep
-            key={index}
-            label={item.label}
-            active={currentStep === index}
-            completed={index < currentStep}
-            pending={index > currentStep}
-            onClick={() => {
-              changeCurrentStep(index);
-              navigate(item.link);
-            }}
-          />
-        );
-      })}
+      {/* Trip steps */}
+      <div className="relative flex items-center gap-10">
+        <div className="absolute h-0.5 w-full items-center bg-gray-200"></div>
+        <motion.div
+          layout
+          initial={{ width: fromWidth }}
+          animate={{ width: toWidth }}
+          transition={{
+            duration: 1,
+            delay: 0.2,
+            type: "tween",
+            ease: "easeOut",
+          }}
+          className={`absolute h-0.5 items-center bg-orange-300`}
+        ></motion.div>
+        {tripSteps.map((item, index) => {
+          return (
+            <TripStep
+              key={index}
+              label={item.label}
+              active={index === currentStep}
+              completed={index < currentStep}
+              incomplete={index > currentStep}
+              penultimate={index < currentStep - 1}
+              onClick={() => {
+                changeCurrentStep(index);
+                navigate(item.link);
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

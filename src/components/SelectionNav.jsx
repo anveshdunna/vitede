@@ -27,11 +27,11 @@ function SelectionNav({
             {/* Skeleton */}
             <div className="relative w-[17.5rem] rounded-lg border border-solid border-gray-100 p-2 before:absolute before:bg-gradient-to-r before:from-transparent before:via-gray-50 before:to-transparent">
               <div className="relative flex gap-2">
-                <div className="h-4 w-4 animate-shimmerbg rounded-full bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
-                <div className="flex w-full flex-col gap-1">
-                  <div className="my-0.5 h-3 w-3/4 animate-shimmerbg rounded-lg bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
-                  <div className="my-0.5 h-3 w-1/4 animate-shimmerbg rounded-lg bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
-                  <div className="my-0.5 h-3 w-1/4 animate-shimmerbg rounded-lg bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
+                <div className="h-4 w-4 flex-none animate-shimmerbg rounded-full bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
+                <div className="flex w-full flex-col gap-0.5">
+                  <div className="my-1 h-2 w-3/4 animate-shimmerbg rounded-lg bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
+                  <div className="my-1 h-2 w-1/4 animate-shimmerbg rounded-lg bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
+                  <div className="my-1 h-2 w-1/4 animate-shimmerbg rounded-lg bg-gray-100 bg-gradient-to-r from-transparent from-40% via-gray-50 to-transparent to-60% bg-double bg-fixed"></div>
                 </div>
               </div>
             </div>

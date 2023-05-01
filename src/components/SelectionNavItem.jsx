@@ -13,7 +13,7 @@ function SelectionNavItem({ expand, item, selected, active, onClick }) {
       tabIndex={0}
       onClick={onClick}
     >
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-0.5">
         {/* Locations */}
         <div className="flex items-center gap-1 font-medium text-gray-700">
           <Icon

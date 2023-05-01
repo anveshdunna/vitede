@@ -56,7 +56,7 @@ const HotelRating = ({ item }) => {
       <div className="font-medium text-white sm:block sm:text-green-500">
         Very good
       </div>
-      <div className="text-caption2 text-white sm:text-gray-500">
+      <div className="text-caption1 text-white sm:text-gray-500">
         ({item.userReviewCount} reviews)
       </div>
     </div>

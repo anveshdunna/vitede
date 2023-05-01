@@ -47,26 +47,3 @@ const ILCheckbox = (props) => {
 };
 
 export default ILCheckbox;
-
-// Old way with antd
-// import { Checkbox } from "antd";
-
-// const ILCheckbox = (props) => {
-//   const { emphasized, children, ...restProps } = props;
-
-//   // Variants - future
-//   // Size - future
-//   // Definitions
-//   const textWeight = emphasized ? "font-medium" : "font-regular";
-
-//   return (
-//     <Checkbox
-//       className={`text-gray-700 ${textWeight} font-['Inter'] [&:not(:first-child)]:ms-0`}
-//       {...restProps}
-//     >
-//       {children}
-//     </Checkbox>
-//   );
-// };
-
-// export default ILCheckbox;

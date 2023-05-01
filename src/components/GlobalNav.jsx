@@ -14,7 +14,7 @@ function ProductNavItem({ item }) {
       className={({ isActive }) =>
         `rounded-lg px-2 py-2 text-body2 font-medium no-underline transition duration-100 ${
           isActive
-            ? `bg-orange-50 text-gray-900`
+            ? `bg-transparent text-orange-500 hover:bg-gray-80`
             : `text-gray-700 hover:bg-gray-80 active:bg-gray-100	`
         }`
       }
@@ -40,7 +40,7 @@ function GlobalNavItem({ item, setIndex }) {
       }}
       className={`flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-2 text-caption2 font-medium no-underline transition duration-100 ${
         isActive
-          ? `bg-orange-50 text-gray-900`
+          ? `bg-transparent text-orange-500 hover:bg-gray-80`
           : `text-gray-700 hover:bg-gray-80 active:bg-gray-100`
       }`}
     >
