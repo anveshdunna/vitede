@@ -1,5 +1,6 @@
 import RecommendedToggle from "./RecommendedToggle";
 import ILCheckbox from "./core/ILCheckbox";
+import ILTag from "./core/ILTag";
 
 function FlightFilters() {
   return (
@@ -7,6 +8,11 @@ function FlightFilters() {
       <div className="sticky top-24 flex h-40 flex-col gap-6 bg-gray-80">
         <div className="text-body1 font-semibold">Filters</div>
         <RecommendedToggle />
+        <div className="bg-orange-300">
+          <ILTag closable>Tag 1</ILTag>
+          <ILTag closable>Tag 3</ILTag>
+          <ILTag closable>American Airlines</ILTag>
+        </div>
         <div className="flex flex-col gap-2">
           {commonFlightFilters.map((item, index) => (
             <ILCheckbox key={index}>{item}</ILCheckbox>

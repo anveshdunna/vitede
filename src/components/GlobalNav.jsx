@@ -5,14 +5,15 @@ import { globalNavLinks, globalNavUtils } from "../data/globalNavData.js";
 import { useState } from "react";
 import { useNav } from "../contexts/NavContext";
 import React from "react";
+import { motion } from "framer-motion";
 
-function ProductNavItem({ item }) {
+function ProductNavItem({ item, layoutid }) {
   const { changeNavOpen, screenWidth } = useNav();
   return (
     <NavLink
       to={item.path}
       className={({ isActive }) =>
-        `rounded-lg px-2 py-2 text-body2 font-medium no-underline transition duration-100 ${
+        `relative rounded-lg px-2 py-2 text-body2 font-medium no-underline transition duration-100 ${
           isActive
             ? `bg-transparent text-orange-500 hover:bg-gray-80`
             : `text-gray-700 hover:bg-gray-80 active:bg-gray-100	`
@@ -20,7 +21,17 @@ function ProductNavItem({ item }) {
       }
       onClick={screenWidth <= 1200 && changeNavOpen}
     >
-      {item.title}
+      {({ isActive }) => (
+        <>
+          <span>{item.title}</span>
+          {isActive && (
+            <motion.div
+              layoutId={`plink-${layoutid}`}
+              className={`absolute inset-0 my-2 -ml-2 w-0.5 bg-orange-500`}
+            ></motion.div>
+          )}
+        </>
+      )}
     </NavLink>
   );
 }
@@ -38,12 +49,20 @@ function GlobalNavItem({ item, setIndex }) {
         setIndex && setIndex(item.id);
         screenWidth <= 1200 && changeNavOpen();
       }}
-      className={`flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-2 text-caption2 font-medium no-underline transition duration-100 ${
+      className={`relative flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-2 text-caption2 font-medium no-underline transition duration-100 ${
         isActive
-          ? `bg-transparent text-orange-500 hover:bg-gray-80`
+          ? `bg-transparent text-gray-900 hover:bg-gray-80`
           : `text-gray-700 hover:bg-gray-80 active:bg-gray-100`
       }`}
     >
+      {/* {isActive && (
+        <motion.div
+          layoutId="active-glink-indicator"
+          className={`absolute inset-0 ${
+            item.title ? `-ml-1` : `-ml-3`
+          } my-2 w-0.5 bg-orange-500`}
+        ></motion.div>
+      )} */}
       <Icon
         name={isActive ? item.iconActive : item.icon}
         color={isActive ? "currentColor" : "#6b7280"}
@@ -155,8 +174,14 @@ function GlobalNav() {
                       key={item.key}
                     >
                       {item.subnav &&
-                        item.subnav.map((item) => {
-                          return <ProductNavItem item={item} key={item.key} />;
+                        item.subnav.map((a) => {
+                          return (
+                            <ProductNavItem
+                              item={a}
+                              key={a.key}
+                              layoutid={item.id}
+                            />
+                          );
                         })}
                     </div>
                   )}

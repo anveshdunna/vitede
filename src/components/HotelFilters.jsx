@@ -4,7 +4,7 @@ import ILCheckbox from "./core/ILCheckbox";
 function HotelFilters() {
   return (
     <>
-      <div className="sticky top-24 flex h-40 flex-col gap-6 bg-gray-80">
+      <div className="sticky top-24 flex h-40 flex-col gap-6 bg-orange-300">
         <div className="text-body1 font-semibold">Filters</div>
         <RecommendedToggle />
         <div className="flex flex-col gap-2">
