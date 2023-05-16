@@ -1,42 +1,32 @@
+import FilterLayout, { FilterSection } from "./FilterLayout";
 import RecommendedToggle from "./RecommendedToggle";
 import ILCheckbox from "./core/ILCheckbox";
 
 function HotelFilters() {
   return (
     <>
-      <div className="sticky top-24 flex h-40 flex-col gap-6 bg-orange-300">
-        <div className="text-body1 font-semibold">Filters</div>
+      <div className="h-24 rounded-lg border border-solid border-gray-200 bg-white">
+        Show in map
+      </div>
+      <div>Search hotel by name</div>
+      <FilterLayout appliedFilters={appliedFilters}>
         <RecommendedToggle />
-        <div className="flex flex-col gap-2">
+        <FilterSection>
           {commonHotelFilters.map((item, index) => (
             <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="text-body2 font-medium text-gray-700">
-            Star rating
-          </div>
+        </FilterSection>
+        <FilterSection title="Guest rating">
           {commonHotelFilters.map((item, index) => (
             <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="text-body2 font-medium text-gray-700">
-            Guest rating
-          </div>
-          {commonHotelFilters.map((item, index) => (
-            <ILCheckbox key={index}>{item}</ILCheckbox>
-          ))}
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="text-body2 font-medium text-gray-700">
-            Loyalty chains
-          </div>
+        </FilterSection>
+        <FilterSection title="Loyalty chains">
           {loyaltyChains.map((item, index) => (
             <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
-        </div>
-      </div>
+        </FilterSection>
+      </FilterLayout>
     </>
   );
 }
@@ -58,6 +48,29 @@ const loyaltyChains = [
   "Club Mahindra hotels",
   "Club ITC",
   "Oberoi One",
+];
+
+const appliedFilters = [
+  "Upto 1 stop",
+  "Economy",
+  "Aer Lingus",
+  "Air France",
+  "American Airlines",
+  "Austrian Airlines",
+  "British Airways",
+  "Brussels Airlines",
+  "Delta Air Lines",
+  "Finnair",
+  "Upto 1 stop",
+  "Economy",
+  "Aer Lingus",
+  "Air France",
+  "American Airlines",
+  "Austrian Airlines",
+  "British Airways",
+  "Brussels Airlines",
+  "Delta Air Lines",
+  "Finnair",
 ];
 
 const guestRatings = [];

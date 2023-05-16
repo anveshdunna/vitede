@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { selectionNavData } from "../data/selectionNavData";
 import ProductBlock from "../components/ProductBlock";
 import SelectionContextProvider from "../contexts/SelectionContext";
+import FilterLayout from "../components/FilterLayout";
 
 function SelectOptions(props) {
   const { scrollDisabled, setScrollDisabled } = useScroll();
@@ -62,8 +63,8 @@ function SelectOptions(props) {
         />
         <div className="section">
           <div className="fixed-container">
-            <div className="mt-[108px] grid w-full grid-cols-4">
-              <div className="mx-4 hidden basis-1/4 pt-4 md:block">
+            <div className="mt-24 grid w-full grid-cols-4">
+              <div className="mx-4 hidden basis-1/4 md:block">
                 {selectionNavData[currentLeg].travelMode === "flight" ? (
                   <FlightFilters />
                 ) : (

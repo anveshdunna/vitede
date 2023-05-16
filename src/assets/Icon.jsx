@@ -1,7 +1,12 @@
-const IconMap = {
+export const IconMap = {
   arrowRightAltSmall: ArrowRightAltSmall,
   arrowRightLeftSmall: ArrowRightLeftSmall,
   clipboardBulletsSmall: ClipboardBulletsSmall,
+  chevronDownSmall: ChevronDownSmall,
+  chevronLeftSmall: ChevronLeftSmall,
+  chevronRightSmall: ChevronRightSmall,
+  chevronUpSmall: ChevronUpSmall,
+  closeAltSmall: CloseAltSmall,
   coffeeSmall: CoffeeSmall,
   crossSmall: CrossSmall,
   expense: Expense,
@@ -56,11 +61,59 @@ function ArrowRightLeftSmall(props) {
   );
 }
 
+// Corrected
+function ChevronDownSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M11.854 6.146a.5.5 0 0 0-.708 0L8 9.293 4.854 6.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0 0-.708Z"
+    ></path>
+  );
+}
+
+function ChevronLeftSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M9.854 11.854a.5.5 0 0 0 0-.708L6.707 8l3.147-3.146a.5.5 0 0 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708 0Z"
+    ></path>
+  );
+}
+
+function ChevronRightSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M6.146 11.854a.5.5 0 0 1 0-.708L9.293 8 6.146 4.854a.5.5 0 1 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708 0Z"
+    ></path>
+  );
+}
+
+function ChevronUpSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M11.854 9.854a.5.5 0 0 1-.708 0L8 6.707 4.854 9.854a.5.5 0 0 1-.708-.708l3.5-3.5a.5.5 0 0 1 .708 0l3.5 3.5a.5.5 0 0 1 0 .708Z"
+    ></path>
+  );
+}
+
+// Corrected
+
 function ClipboardBulletsSmall(props) {
   return (
     <path
       fill={props.color}
       d="M7 7.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm0 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM5.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm0 3a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-.415-9A1.5 1.5 0 0 1 6.5 1h3a1.5 1.5 0 0 1 1.415 1h.585A1.5 1.5 0 0 1 13 3.5v10a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-10A1.5 1.5 0 0 1 4.5 2h.585ZM6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3ZM5.085 3H4.5a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5h-.585A1.5 1.5 0 0 1 9.5 4h-3a1.5 1.5 0 0 1-1.415-1Z"
+    ></path>
+  );
+}
+
+function CloseAltSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M11.854 4.854a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146Z"
     ></path>
   );
 }

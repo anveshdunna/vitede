@@ -24,6 +24,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { useState } from "react";
 import { useEffect } from "react";
 import ConfirmDetails from "./pages/ConfirmDetails";
+import { ConfigProvider } from "antd";
 
 function Layout(props) {
   return (
@@ -40,29 +41,40 @@ function Layout(props) {
 
 function App() {
   return (
-    <Router>
-      <ScrollContextProvider>
-        <Layout>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="travel/overview" element={<TravelHome />} />
-            <Route path="travel/trips" element={<Trips />} />
-            <Route path="travel/events" element={<Events />} />
-            <Route path="travel/concierge" element={<Concierge />} />
-            <Route path="travel/approvals" element={<Approvals />} />
-            <Route path="travel/create-trip" element={<CreateTrip />} />
-            <Route path="travel/select-options" element={<SelectOptions />} />
-            <Route path="travel/confirm-details" element={<ConfirmDetails />} />
-            <Route path="expense/overview" element={<ExpenseHome />} />
-            <Route path="expense/expenses" element={<ExpenseHome />} />
-            <Route path="expense/reports" element={<ExpenseHome />} />
-            <Route path="expense/approvals" element={<ExpenseHome />} />
-            <Route path="help" element={<Help />} />
-            <Route path="notifications" element={<Notifications />} />
-          </Routes>
-        </Layout>
-      </ScrollContextProvider>
-    </Router>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontFamily: "Inter",
+        },
+      }}
+    >
+      <Router>
+        <ScrollContextProvider>
+          <Layout>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="travel/overview" element={<TravelHome />} />
+              <Route path="travel/trips" element={<Trips />} />
+              <Route path="travel/events" element={<Events />} />
+              <Route path="travel/concierge" element={<Concierge />} />
+              <Route path="travel/approvals" element={<Approvals />} />
+              <Route path="travel/create-trip" element={<CreateTrip />} />
+              <Route path="travel/select-options" element={<SelectOptions />} />
+              <Route
+                path="travel/confirm-details"
+                element={<ConfirmDetails />}
+              />
+              <Route path="expense/overview" element={<ExpenseHome />} />
+              <Route path="expense/expenses" element={<ExpenseHome />} />
+              <Route path="expense/reports" element={<ExpenseHome />} />
+              <Route path="expense/approvals" element={<ExpenseHome />} />
+              <Route path="help" element={<Help />} />
+              <Route path="notifications" element={<Notifications />} />
+            </Routes>
+          </Layout>
+        </ScrollContextProvider>
+      </Router>
+    </ConfigProvider>
   );
 }
 
