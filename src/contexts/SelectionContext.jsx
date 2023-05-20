@@ -13,9 +13,13 @@ const SelectionContextProvider = ({ children }) => {
     setSelectedFlight(key);
   };
 
-  const [selectedObjects, setSelectedObjects] = useState([]);
-
-  // Loading states
+  const [showHotel, setShowHotel] = useState(false);
+  const changeShowHotel = () => {
+    setShowHotel(!showHotel);
+  };
+  const setShowHotelFalse = () => {
+    setShowHotel(false);
+  };
 
   const value = {
     selectedHotel,
@@ -24,6 +28,10 @@ const SelectionContextProvider = ({ children }) => {
     selectedFlight,
     setSelectedFlight,
     changeSelectedFlight,
+    showHotel,
+    setShowHotel,
+    changeShowHotel,
+    setShowHotelFalse,
   };
 
   return (

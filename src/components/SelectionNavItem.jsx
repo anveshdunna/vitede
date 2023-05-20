@@ -4,14 +4,19 @@ import { useSelection } from "../contexts/SelectionContext";
 let icon, item;
 
 function SelectionNavItem({ expand, item, selected, active, onClick }) {
-  const { selectedHotel, selectedFlight } = useSelection();
+  // Getting hotel details context
+
+  const { selectedHotel, selectedFlight, setShowHotelFalse } = useSelection();
   return (
     <div
       className={`flex w-[17.5rem] flex-none flex-col items-stretch gap-4 rounded-lg border border-solid ${
         active ? `border-orange-500` : `border-gray-200`
       } cursor-pointer bg-white p-2 text-caption1 text-gray-900`}
       tabIndex={0}
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        setShowHotelFalse();
+      }}
     >
       <div className="flex flex-col gap-0.5">
         {/* Locations */}

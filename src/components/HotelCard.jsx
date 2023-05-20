@@ -93,7 +93,8 @@ const HotelPoints = ({ item }) => {
 
 function HotelCard({ item }) {
   const { screenWidth } = useNav();
-  const { selectedHotel, changeSelectedHotel } = useSelection();
+  const { selectedHotel, changeSelectedHotel, showHotel, changeShowHotel } =
+    useSelection();
   return (
     <li className="mb-4">
       <div className="relative z-[1] overflow-hidden rounded-xl bg-white no-underline outline outline-1 outline-offset-[-1px] outline-gray-900/20">
@@ -154,7 +155,9 @@ function HotelCard({ item }) {
                 size="small"
                 onClick={() => {
                   changeSelectedHotel(item);
+                  changeShowHotel();
                   console.log(item);
+                  console.log(showHotel);
                 }}
               >
                 Choose room
@@ -169,3 +172,9 @@ function HotelCard({ item }) {
 }
 
 export default HotelCard;
+
+// Old hotel card onclick function
+// onClick={() => {
+//                   changeSelectedHotel(item);
+//                   console.log(item);
+//                 }}

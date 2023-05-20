@@ -17,7 +17,7 @@ const ILCheckbox = (props) => {
       <svg
         className={`mr-2 inline-block h-4 w-4 rounded-smol border border-solid transition duration-75 peer-focus-visible:ring ${
           isChecked
-            ? "border-orange-500 bg-orange-500 text-white group-hover:border-orange-600 group-hover:bg-orange-600"
+            ? "border-orange-500 bg-orange-500 text-white group-hover:border-orange-600"
             : "border-gray-300 bg-white text-transparent group-hover:border-gray-500"
         }`}
         aria-hidden="true"

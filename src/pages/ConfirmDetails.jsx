@@ -4,27 +4,25 @@ import { useEffect } from "react";
 import TripCard from "../components/TripCard";
 import TripSteps from "../components/TripSteps";
 import Page from "./Page";
-import SelectionContextProvider from "../contexts/SelectionContext";
 
 function ConfirmDetails() {
   const navigate = useNavigate();
   return (
-    <SelectionContextProvider>
-      <Page>
-        <TripSteps sticky />
-        {/* Section */}
-        <div className="section" id="section">
-          <div className="fixed-container">
-            <div className="mx-4 flex flex-col gap-4">
-              {Array(6)
-                .fill("")
-                .map(function () {
-                  return (
-                    <div className="h-40 w-full rounded-xl bg-gray-100"> </div>
-                  );
-                })}
+    <Page>
+      <TripSteps sticky />
+      {/* Section */}
+      <div className="section" id="section">
+        <div className="fixed-container">
+          <div className="mx-4 flex flex-col gap-4">
+            {Array(6)
+              .fill("")
+              .map(function () {
+                return (
+                  <div className="h-40 w-full rounded-xl bg-gray-100"> </div>
+                );
+              })}
 
-              {/* <button
+            {/* <button
               onClick={() => navigate("/travel/select-options")}
               className="rounded-lg bg-gray-900 px-4 py-4 text-white"
             >
@@ -38,11 +36,10 @@ function ConfirmDetails() {
             >
               go to top
             </button> */}
-            </div>
           </div>
         </div>
-      </Page>
-    </SelectionContextProvider>
+      </div>
+    </Page>
   );
 }
 

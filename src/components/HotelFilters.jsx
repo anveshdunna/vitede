@@ -1,15 +1,23 @@
-import FilterLayout, { FilterSection } from "./FilterLayout";
+import Icon from "../assets/Icon";
+import FilterLayout, { FilterSection, FiltersHeader } from "./FilterLayout";
 import RecommendedToggle from "./RecommendedToggle";
 import ILCheckbox from "./core/ILCheckbox";
+import ILInput from "./core/ILInput";
 
 function HotelFilters() {
   return (
     <>
-      <div className="h-24 rounded-lg border border-solid border-gray-200 bg-white">
-        Show in map
-      </div>
-      <div>Search hotel by name</div>
-      <FilterLayout appliedFilters={appliedFilters}>
+      <FilterLayout>
+        <div className="mt-4 h-24 rounded-lg border border-solid border-gray-200 bg-white">
+          Show in map
+        </div>
+        <div>
+          <ILInput
+            placeholder="Search by hotel name"
+            prefix={<Icon name="vehicleFlightSmall" className="mr-1" />}
+          />
+        </div>
+        <FiltersHeader appliedFilters={appliedFilters} />
         <RecommendedToggle />
         <FilterSection>
           {commonHotelFilters.map((item, index) => (
