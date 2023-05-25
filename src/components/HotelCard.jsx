@@ -101,7 +101,7 @@ function HotelCard({ item }) {
         {item.recommended && <Recommendation />}
         <div className="flex flex-col sm:flex-row">
           {/* Hotel image box */}
-          <div className="relative h-40 w-full flex-none overflow-clip sm:h-[200px] sm:w-[200px]">
+          <div className="relative -z-[1] h-40 w-full flex-none overflow-clip sm:h-[200px] sm:w-[200px]">
             <img
               className="h-full w-full object-cover"
               alt=""

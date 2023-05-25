@@ -13,7 +13,7 @@ function FilterLayout(props) {
     <div className="sticky top-28 mb-8 mt-4 flex h-[calc(100vh-10.5rem)] flex-col overflow-hidden rounded-lg border border-solid border-gray-200">
       {/* Header */}
       <div className="sticky top-0 z-10">
-        <div className="absolute top-0 flex w-full flex-col border-b border-solid border-gray-200 bg-background">
+        <div className="absolute top-0 flex w-full flex-col border-b border-solid border-gray-200 bg-white">
           {/* Subheader */}
           <div className="flex items-baseline justify-between px-4 py-3">
             <div className="flex items-baseline gap-2">

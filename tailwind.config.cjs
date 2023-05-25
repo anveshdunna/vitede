@@ -113,6 +113,10 @@ module.exports = {
       backgroundSize: {
         double: "200%",
       },
+      backgroundImage: {
+        "gradient-radial":
+          "radial-gradient(circle at left, var(--tw-gradient-stops))",
+      },
       borderRadius: {
         smol: "0.25rem",
       },
@@ -134,6 +138,7 @@ module.exports = {
       animation: {
         recommendation: "recommendation 8s infinite",
         shimmerbg: "shimmerbg linear 2s infinite",
+        shimmerreco: "shimmerbg linear 16s infinite",
       },
       keyframes: {
         recommendation: {
@@ -157,10 +162,10 @@ module.exports = {
         },
         shimmerbg: {
           "0%": {
-            backgroundPosition: "100%",
+            backgroundPosition: "-100%",
           },
           "100%": {
-            backgroundPosition: "-100%",
+            backgroundPosition: "100%",
           },
         },
       },
