@@ -1,8 +1,12 @@
-import { Switch } from "antd";
+import { ConfigProvider, Switch } from "antd";
 
 const ILToggle = (props) => {
   const { ...restProps } = props;
-  return <Switch {...restProps} />;
+  return (
+    <ConfigProvider theme={{ token: { colorPrimary: "#ec5d25" } }}>
+      <Switch {...restProps} />
+    </ConfigProvider>
+  );
 };
 
 export default ILToggle;

@@ -1,8 +1,12 @@
-import { Select } from "antd";
+import { ConfigProvider, Select } from "antd";
 
 const ILSelect = (props) => {
   const { ...restProps } = props;
-  return <Select {...restProps} />;
+  return (
+    <ConfigProvider theme={{ token: { colorPrimary: "#ec5d25" } }}>
+      <Select {...restProps} />
+    </ConfigProvider>
+  );
 };
 
 export default ILSelect;

@@ -6,7 +6,7 @@ import ILSlider from "./core/ILSlider";
 import { useState } from "react";
 import { minutesToHoursMinutes } from "../utils";
 import { Tag } from "antd";
-import FilterLayout, { FilterSection, FiltersHeader } from "./FilterLayout";
+import FiltersLayout, { FilterSection, FiltersHeader } from "./FiltersLayout";
 
 const FlightDuration = (props) => {
   const { initialMinDuration, initialMaxDuration } = props;
@@ -43,7 +43,7 @@ const FlightTimes = (props) => {};
 
 function FlightFilters() {
   return (
-    <FilterLayout>
+    <FiltersLayout>
       <FiltersHeader appliedFilters={appliedFilters} />
       <RecommendedToggle />
       <FilterSection>
@@ -51,17 +51,17 @@ function FlightFilters() {
           <ILCheckbox key={index}>{item}</ILCheckbox>
         ))}
       </FilterSection>
-      <FilterSection title="Stops">
+      <FilterSection heading="Stops">
         {stops.map((item, index) => (
           <ILCheckbox key={index}>{item}</ILCheckbox>
         ))}
       </FilterSection>
-      <FilterSection title="Cabin class">
+      <FilterSection heading="Cabin class">
         {cabinClasses.map((item, index) => (
           <ILCheckbox key={index}>{item}</ILCheckbox>
         ))}
       </FilterSection>
-      <FilterSection title="Flight times">
+      <FilterSection heading="Flight times">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <div className="text-caption1 font-medium">Departure</div>
@@ -86,23 +86,23 @@ function FlightFilters() {
           </div>
         </div>
 
-        {/* <FlightDuration initialMinDuration={640} initialMaxDuration={1805} /> */}
+        {/* <FlightDuration initialMinDuration={640} initialMaxDuration={1805} />  */}
       </FilterSection>
-      <FilterSection title="Airlines">
+      <FilterSection heading="Airlines">
         {airlines.map((item, index) => (
           <ILCheckbox key={index}>{item}</ILCheckbox>
         ))}
       </FilterSection>
-      <FilterSection title="Airports">
+      <FilterSection heading="Airports">
         {airports.map((item, index) => (
           <ILCheckbox key={index}>{item}</ILCheckbox>
         ))}
       </FilterSection>
-    </FilterLayout>
+    </FiltersLayout>
   );
 }
 
-const commonFlightFilters = ["In-policy only", "Refundable fares"];
+const commonFlightFilters = ["In-policy options only", "Refundable fares"];
 
 const stops = ["Nonstop", "1 stop", "2+ stops"];
 
@@ -138,14 +138,14 @@ const appliedFilters = [
   "Finnair",
   "Upto 1 stop",
   "Economy",
-  "Aer Lingus",
-  "Air France",
-  "American Airlines",
-  "Austrian Airlines",
-  "British Airways",
-  "Brussels Airlines",
-  "Delta Air Lines",
-  "Finnair",
+  // "Aer Lingus",
+  // "Air France",
+  // "American Airlines",
+  // "Austrian Airlines",
+  // "British Airways",
+  // "Brussels Airlines",
+  // "Delta Air Lines",
+  // "Finnair",
 ];
 
 export default FlightFilters;

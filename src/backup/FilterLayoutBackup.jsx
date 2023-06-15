@@ -3,7 +3,7 @@ import ILChip from "./core/ILChip";
 import ILTextButton from "./core/ILTextButton";
 import { motion, AnimatePresence } from "framer-motion";
 
-function FilterLayout(props) {
+function FiltersLayout(props) {
   const { children, appliedFilters } = props;
   const [showAppliedFilters, setShowAppliedFilters] = useState(false);
   const changeShowAppliedFilters = () => {
@@ -75,4 +75,4 @@ export function FilterSection(props) {
   );
 }
 
-export default FilterLayout;
+export default FiltersLayout;

@@ -1,5 +1,5 @@
 import Icon from "../assets/Icon";
-import FilterLayout, { FilterSection, FiltersHeader } from "./FilterLayout";
+import FiltersLayout, { FilterSection, FiltersHeader } from "./FiltersLayout";
 import RecommendedToggle from "./RecommendedToggle";
 import ILCheckbox from "./core/ILCheckbox";
 import ILInput from "./core/ILInput";
@@ -7,7 +7,7 @@ import ILInput from "./core/ILInput";
 function HotelFilters() {
   return (
     <>
-      <FilterLayout>
+      <FiltersLayout>
         <div className="mt-4 h-24 rounded-lg border border-solid border-gray-200 bg-white">
           Show in map
         </div>
@@ -24,23 +24,23 @@ function HotelFilters() {
             <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </FilterSection>
-        <FilterSection title="Guest rating">
+        <FilterSection heading="Guest rating">
           {commonHotelFilters.map((item, index) => (
             <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </FilterSection>
-        <FilterSection title="Loyalty chains">
+        <FilterSection heading="Loyalty chains">
           {loyaltyChains.map((item, index) => (
             <ILCheckbox key={index}>{item}</ILCheckbox>
           ))}
         </FilterSection>
-      </FilterLayout>
+      </FiltersLayout>
     </>
   );
 }
 
 const commonHotelFilters = [
-  "Within policy only",
+  "In-policy options only",
   "Must include breakfast",
   "Instant booking",
   "Refundable fares",

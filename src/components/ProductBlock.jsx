@@ -17,31 +17,11 @@ function ProductBlock({ travelMode }) {
           <span className="font-semibold">220</span> {`${travelMode}s`}
         </div>
         <div>
-          <span className="mr-1 font-medium">Sort by</span>
+          <span className="mr-2 font-medium">Sort by</span>
           <ILSelect
-            defaultValue="lucy"
-            style={{
-              width: 120,
-            }}
-            options={[
-              {
-                value: "jack",
-                label: "Jack",
-              },
-              {
-                value: "lucy",
-                label: "Lucy",
-              },
-              {
-                value: "Yiminghe",
-                label: "yiminghe",
-              },
-              {
-                value: "disabled",
-                label: "Disabled",
-                disabled: true,
-              },
-            ]}
+            defaultValue="recommended"
+            dropdownMatchSelectWidth={false}
+            options={flightSortOptions}
           />
         </div>
       </div>
@@ -50,5 +30,36 @@ function ProductBlock({ travelMode }) {
     </div>
   );
 }
+
+const flightSortOptions = [
+  {
+    value: "recommended",
+    label: "Recommended",
+  },
+  {
+    value: "price",
+    label: "Price",
+  },
+  {
+    value: "duration",
+    label: "Duration",
+  },
+  {
+    value: "earliestDeparture",
+    label: "Earliest departure",
+  },
+  {
+    value: "latestDeparture",
+    label: "Latest departure",
+  },
+  {
+    value: "earliestArrival",
+    label: "Earliest arrival",
+  },
+  {
+    value: "latestArrival",
+    label: "Latest arrival",
+  },
+];
 
 export default ProductBlock;

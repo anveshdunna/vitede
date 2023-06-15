@@ -7,8 +7,8 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@rive-app/react-canvas": "^3.0.48",
@@ -27,12 +27,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
-    "@storybook/addon-actions": "^7.0.12",
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^7.0.12",
-    "@storybook/addon-links": "^7.0.12",
-    "@storybook/builder-vite": "^7.0.12",
-    "@storybook/react": "^7.0.12",
+    "@storybook/addon-actions": "^7.0.20",
+    "@storybook/addon-essentials": "^7.0.20",
+    "@storybook/addon-interactions": "^7.0.20",
+    "@storybook/addon-links": "^7.0.20",
+    "@storybook/addon-mdx-gfm": "^7.0.20",
+    "@storybook/react": "^7.0.20",
+    "@storybook/react-vite": "^7.0.20",
     "@storybook/testing-library": "^0.1.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
@@ -42,6 +43,7 @@
     "eslint-plugin-storybook": "^0.6.12",
     "postcss": "^8.4.21",
     "prettier-plugin-tailwindcss": "^0.2.5",
+    "storybook": "^7.0.20",
     "tailwindcss": "^3.3.1",
     "vite": "^4.2.0"
   }
