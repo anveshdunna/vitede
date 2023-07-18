@@ -1,24 +1,25 @@
 import Icon from "../assets/Icon";
+import ILPopover from "./core/ILPopover";
 
 function Tag({ item }) {
   let icon;
   let label;
-  let link;
+  let tooltip;
 
   switch (item) {
     case "ib":
       icon = "sparkleSmall";
       label = "Instant booking";
-      link = "https://google.com/";
+      tooltip = "https://google.com/";
       break;
     case "gst":
       label = "GST assured";
-      link = "https://google.com/";
+      tooltip = "https://google.com/";
       break;
     case "qu":
       icon = "vehicleCarSmall";
       label = "Quality unclear";
-      link = "https://google.com/";
+      tooltip = "https://google.com/";
       break;
     case "eco":
       label = "Economy";
@@ -32,25 +33,41 @@ function Tag({ item }) {
   }
 
   return (
+    // <>
+    //   {tooltip ? (
+    //     <button className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium text-gray-700 underline decoration-gray-300">
+    //       {icon && (
+    //         <span className="-ml-1">
+    //           <Icon name={icon} color="currentColor" />
+    //         </span>
+    //       )}
+    //       {label}
+    //     </button>
+    //   ) : (
+    //     <div className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium text-gray-700">
+    //       {icon && (
+    //         <span className="-ml-1">
+    //           <Icon name={icon} color="currentColor" />
+    //         </span>
+    //       )}
+    //       {label}
+    //     </div>
+    //   )}
+    // </>
     <>
-      {link ? (
-        <button className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium text-gray-700 underline decoration-gray-300">
-          {icon && (
-            <span className="-ml-1">
-              <Icon name={icon} color="currentColor" />
-            </span>
-          )}
-          {label}
-        </button>
+      {tooltip ? (
+        <ILPopover>
+          <div className="inline-flex cursor-pointer items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium text-gray-700 decoration-gray-500 transition duration-75 hover:bg-gray-80">
+            {icon && (
+              <span className="-ml-1">
+                <Icon name={icon} color="currentColor" />
+              </span>
+            )}
+            {label}
+          </div>
+        </ILPopover>
       ) : (
-        <div className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 px-2 py-1 text-caption1 font-medium text-gray-700">
-          {icon && (
-            <span className="-ml-1">
-              <Icon name={icon} color="currentColor" />
-            </span>
-          )}
-          {label}
-        </div>
+        <div>Content</div>
       )}
     </>
   );
@@ -60,7 +77,7 @@ export default Tag;
 
 {
   /* <>
-      {link ? (
+      {tooltip ? (
         <button className="mr-1 flex items-center gap-1 whitespace-nowrap rounded-full border border-solid border-gray-100 bg-gray-50 py-1 px-2 text-caption1 font-medium underline">
           {icon && (
             <span className="-ml-1">

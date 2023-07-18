@@ -97,11 +97,15 @@ function HotelCard({ item }) {
     useSelection();
   return (
     <li className="mb-4">
-      <div className="relative z-[1] overflow-hidden rounded-xl bg-white no-underline outline outline-1 outline-offset-[-1px] outline-gray-900/20">
-        {item.recommended && <Recommendation />}
+      <div className="relative z-[1] w-full overflow-hidden rounded-xl bg-white no-underline outline outline-1 outline-offset-[-1px] outline-gray-900/20">
+        {item.recommended && (
+          <div className="absolute -z-[1] w-full">
+            <Recommendation />
+          </div>
+        )}
         <div className="flex flex-col sm:flex-row">
           {/* Hotel image box */}
-          <div className="relative -z-[1] h-40 w-full flex-none overflow-clip sm:h-[200px] sm:w-[200px]">
+          <div className="relative -z-[2] h-40 w-full flex-none overflow-clip sm:h-[200px] sm:w-[200px]">
             <img
               className="h-full w-full object-cover"
               alt=""

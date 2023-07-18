@@ -8,8 +8,8 @@ const ILButton = (props) => {
   const isPrimarySubtle = variant === "primarySubtle";
   const isSecondary = variant === "secondary";
   const isSecondarySubtle = variant === "secondarySubtle";
-  const isDestructive = variant === "destructive";
-  const isDestructiveSubtle = variant === "destructiveSubtle";
+  const isCritical = variant === "critical";
+  const isCriticalSubtle = variant === "criticalSubtle";
 
   // Size
   const isSmall = size === "small";
@@ -19,14 +19,14 @@ const ILButton = (props) => {
     ? "bg-orange-500 hover:bg-orange-600 active:bg-orange-600"
     : isSecondary
     ? "bg-gray-900 hover:bg-black active:bg-black"
-    : isDestructive
+    : isCritical
     ? "bg-red-500"
     : "bg-white";
   const textColor = isPrimarySubtle
     ? "text-orange-500"
     : isSecondarySubtle
     ? "text-gray-700"
-    : isDestructiveSubtle
+    : isCriticalSubtle
     ? "text-red-500"
     : "text-white";
   const buttonSize = isSmall

@@ -14,7 +14,7 @@ const ILTextButton = (props) => {
   // Variants
   const isPrimary = variant === "primary";
   const isSecondary = variant === "secondary";
-  const isDestructive = variant === "destructive";
+  const isCritical = variant === "critical";
 
   // Size
 
@@ -24,7 +24,7 @@ const ILTextButton = (props) => {
     ? "text-orange-500 hover:text-orange-600"
     : isSecondary
     ? "text-gray-700 hover:text-gray-900"
-    : isDestructive
+    : isCritical
     ? "text-red-500"
     : "text-orange-500 hover:text-orange-600";
   const textDecoration = inline ? "underline" : "";
