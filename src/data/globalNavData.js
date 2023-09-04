@@ -81,6 +81,34 @@ export const globalNavLinks = [
       },
     ],
   },
+  {
+    id: 3,
+    key: 4,
+    title: "Cards",
+    icon: "expense",
+    iconActive: "expenseFilled",
+    path: "/cards/overview",
+    subnav: [
+      {
+        id: 0,
+        key: 1,
+        title: "Overview",
+        path: "/cards/overview",
+      },
+      {
+        id: 1,
+        key: 2,
+        title: "Cards",
+        path: "/cards/cards",
+      },
+      {
+        id: 2,
+        key: 3,
+        title: "Transactions",
+        path: "/cards/transactions",
+      },
+    ],
+  },
 ];
 
 export const globalNavUtils = [

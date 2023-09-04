@@ -12,7 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background-color: #f1f3f5;
+  background-color: #ffffff;
 }
 
 button,
@@ -52,6 +52,9 @@ input[type="checkbox"] {
   }
   .fixed-container {
     @apply w-screen sm:mx-6 sm:w-[calc(100%-3rem)] lg:w-[1320px];
+  }
+  .fluid-container {
+    @apply w-full px-6;
   }
 }
 

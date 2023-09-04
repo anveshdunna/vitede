@@ -2,8 +2,16 @@ import { useState } from "react";
 import Icon from "../../assets/Icon";
 
 const ILTextButton = (props) => {
-  const { variant, small, inline, accordion, children, onClick, ...restProps } =
-    props;
+  const {
+    variant,
+    small,
+    bgColor,
+    inline,
+    accordion,
+    children,
+    onClick,
+    ...restProps
+  } = props;
 
   const [accordionOpen, setAccordionOpen] = useState(false);
   const changeAccordionOpen = () => {
@@ -21,17 +29,22 @@ const ILTextButton = (props) => {
   // Definitions
   const fontSize = small ? "text-caption1" : "text-body2";
   const textColor = isPrimary
-    ? "text-orange-500 hover:text-orange-600"
+    ? "text-orange-500"
     : isSecondary
-    ? "text-gray-700 hover:text-gray-900"
+    ? "text-gray-700"
     : isCritical
     ? "text-red-500"
-    : "text-orange-500 hover:text-orange-600";
+    : "text-orange-500";
   const textDecoration = inline ? "underline" : "";
+  const padding = small ? "px-1 py-0.5" : "px-2 py-1";
+  const margin = small ? "-mx-1 -my-0.5" : "-mx-2 -my-1";
+  const backgroundColor = bgColor
+    ? `hover:bg-[${bgColor}]`
+    : "hover:bg-gray-80 active:bg-gray-100";
 
   return (
     <button
-      className={`inline-flex items-center rounded-lg transition duration-75 ${textColor} ${fontSize} ${textDecoration} align-middle font-medium`}
+      className={`inline-flex items-center rounded-lg transition duration-75 ${backgroundColor} ${padding} ${margin} ${textColor} ${fontSize} ${textDecoration} align-middle font-medium`}
       {...restProps}
       onClick={changeAccordionOpen}
     >

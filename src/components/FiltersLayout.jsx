@@ -27,7 +27,7 @@ export function FiltersHeader(props) {
     <>
       {/* Subheader */}
       <div className="sticky top-0 z-10 flex w-full items-baseline justify-between border-b border-solid border-gray-200 bg-white px-4 py-3">
-        <div className="flex items-baseline gap-1">
+        <div className="flex items-baseline gap-2">
           <div className="text-body1 font-semibold">Filters</div>
           <div className="font-medium text-gray-400">·</div>
           <ILTextButton

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { minutesToHoursMinutes } from "../utils";
 import { Tag } from "antd";
 import FiltersLayout, { FilterSection, FiltersHeader } from "./FiltersLayout";
+import ILTextButton from "./core/ILTextButton";
 
 const FlightDuration = (props) => {
   const { initialMinDuration, initialMaxDuration } = props;
@@ -89,9 +90,17 @@ function FlightFilters() {
         {/* <FlightDuration initialMinDuration={640} initialMaxDuration={1805} />  */}
       </FilterSection>
       <FilterSection heading="Airlines">
+        <div className="flex gap-2">
+          <ILTextButton small>Select all</ILTextButton>
+          <div className="text-caption1 font-medium text-gray-400">·</div>
+          <ILTextButton small>Reset</ILTextButton>
+        </div>
         {airlines.map((item, index) => (
           <ILCheckbox key={index}>{item}</ILCheckbox>
         ))}
+        <div>
+          <ILTextButton>Show more</ILTextButton>
+        </div>
       </FilterSection>
       <FilterSection heading="Airports">
         {airports.map((item, index) => (

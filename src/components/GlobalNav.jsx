@@ -13,7 +13,7 @@ function ProductNavItem({ item, layoutid }) {
     <NavLink
       to={item.path}
       className={({ isActive }) =>
-        `relative rounded-lg px-2 py-2 text-body2 font-medium no-underline transition duration-100 ${
+        `relative rounded-lg px-2 py-2 text-body2 font-medium no-underline transition duration-100 focus-visible:outline focus-visible:outline-2 ${
           isActive
             ? `bg-transparent text-orange-500 hover:bg-gray-80`
             : `text-gray-700 hover:bg-gray-80 active:bg-gray-100	`
@@ -49,10 +49,10 @@ function GlobalNavItem({ item, setIndex }) {
         setIndex && setIndex(item.id);
         screenWidth <= 1200 && changeNavOpen();
       }}
-      className={`relative flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-2 text-caption2 font-medium no-underline transition duration-100 ${
+      className={`relative flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-2 text-caption2 font-medium no-underline transition duration-100 hover:bg-gray-80 ${
         isActive
-          ? `bg-transparent text-gray-900 hover:bg-gray-80`
-          : `text-gray-700 hover:bg-gray-80 active:bg-gray-100`
+          ? `bg-transparent text-gray-900`
+          : `text-gray-700 active:bg-gray-100`
       }`}
     >
       {/* {isActive && (
@@ -73,12 +73,10 @@ function GlobalNavItem({ item, setIndex }) {
 }
 
 function GlobalNav() {
-  const location = useLocation().pathname.split("/")[1];
+  // Checks the URL and sets initial index
   let initialIndex;
-  const { navOpen, changeNavOpen, screenWidth } = useNav();
-
-  const { pnavOpen } = useNav();
-  const navOpenCondition = `(navOpen || screenWidth > 1200) &&`;
+  const location = useLocation().pathname.split("/")[1];
+  const { navOpen, pnavOpen, changeNavOpen, screenWidth } = useNav();
 
   switch (location) {
     case "":
@@ -90,11 +88,15 @@ function GlobalNav() {
     case "expense":
       initialIndex = 2;
       break;
+    case "cards":
+      initialIndex = 3;
+      break;
     default:
       initialIndex = 0;
   }
-
   const [index, setIndex] = useState(initialIndex);
+
+  // const navOpenCondition = `(navOpen || screenWidth > 1200) &&`;
 
   return (
     <>
@@ -173,6 +175,9 @@ function GlobalNav() {
                       }
                       key={item.key}
                     >
+                      <div className="px-2 py-3 text-body1 font-semibold text-gray-900">
+                        {item.title}
+                      </div>
                       {item.subnav &&
                         item.subnav.map((a) => {
                           return (

@@ -14,6 +14,10 @@ import Trips from "./pages/Trips";
 import Events from "./pages/Events";
 import Concierge from "./pages/Concierge";
 import Approvals from "./pages/Approvals";
+import CardsHome from "./pages/CardsHome";
+import IssueCard from "./pages/IssueCard";
+import CardsCards from "./pages/CardsCards";
+import CardsTransactions from "./pages/CardsTransactions";
 import Help from "./pages/Help";
 import Notifications from "./pages/Notifications";
 import NavContextProvider from "./contexts/NavContext";
@@ -65,6 +69,11 @@ function App() {
             <Route path="expense/expenses" element={<ExpenseHome />} />
             <Route path="expense/reports" element={<ExpenseHome />} />
             <Route path="expense/approvals" element={<ExpenseHome />} />
+            <Route path="cards/overview" element={<CardsHome />} />
+            <Route path="cards/issue-card" element={<IssueCard />} />
+            <Route path="cards/cards" element={<CardsCards />} />
+            <Route path="cards/transactions" element={<CardsTransactions />} />
+
             <Route path="help" element={<Help />} />
             <Route path="notifications" element={<Notifications />} />
           </Routes>
