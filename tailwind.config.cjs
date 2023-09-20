@@ -134,6 +134,14 @@ module.exports = {
       boxShadow: {
         cardborder: "inset 0 0 4px 4px blue",
         leftpanel: "1px 0px 2px 0px #1118271a, 4px 0px 8px 0px #11182726",
+        s300: "0px 4px 8px 0px #11182726, 0px 1px 2px 0px #1118271a",
+        s400: "0px 8px 16px -2px #11182726, 0px 1px 3px 0px #11182726",
+
+        b200: "0px 0px 0px 1px #11182733",
+        b200s300:
+          "0px 0px 0px 1px #11182733, 0px 4px 8px 0px #11182726, 0px 1px 2px 0px #1118271a",
+        b200s400:
+          "0px 0px 0px 1px #11182733, 0px 8px 16px -2px #11182726, 0px 1px 3px 0px #11182726",
       },
       animation: {
         recommendation: "recommendation 8s infinite",

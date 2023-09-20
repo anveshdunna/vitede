@@ -33,6 +33,11 @@ input[type="checkbox"] {
   height: 1px;
 }
 
+.ant-radio-wrapper .ant-radio {
+  align-self: start;
+  margin-top: 2px;
+}
+
 /* F1F3F5  #f9fafb #FBF5EF*/
 
 @layer base {

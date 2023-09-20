@@ -1,6 +1,6 @@
 import { Input } from "antd";
 const ILInput = (props) => {
-  const { variant, size, children, ...restProps } = props;
+  const { variant, children, ...restProps } = props;
 
   return <Input {...restProps} />;
 };

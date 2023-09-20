@@ -2,11 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const ILCheckbox = (props) => {
-  const { children } = props;
+  const { children, ...restProps } = props;
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <label className="group inline-flex cursor-pointer items-center text-body2 text-gray-700">
+    <label
+      className="group inline-flex cursor-pointer items-start text-body2 text-gray-700"
+      {...restProps}
+    >
       <input
         type="checkbox"
         onChange={() => {
@@ -15,7 +18,7 @@ const ILCheckbox = (props) => {
         className="peer"
       ></input>
       <svg
-        className={`mr-2 inline-block h-4 w-4 rounded-smol border border-solid transition duration-75 peer-focus-visible:ring ${
+        className={`mr-2 mt-0.5 inline-block h-4 w-4 flex-none rounded-smol border border-solid transition duration-75 peer-focus-visible:ring ${
           isChecked
             ? "border-orange-500 bg-orange-500 text-white group-hover:border-orange-600"
             : "border-gray-300 bg-white text-transparent group-hover:border-gray-500"

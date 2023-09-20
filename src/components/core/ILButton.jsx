@@ -35,7 +35,7 @@ const ILButton = (props) => {
 
   return (
     <button
-      className={`inline-flex items-center rounded-lg ${backgroundColor} ${textColor} ${buttonSize} min-w-[5rem] align-middle font-['Inter'] font-medium`}
+      className={`inline-flex items-center justify-center rounded-lg ${backgroundColor} ${textColor} ${buttonSize} min-w-[5rem] align-middle font-['Inter'] font-medium`}
       {...restProps}
     >
       {children}
