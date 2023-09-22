@@ -41,7 +41,7 @@ function IssuedCard() {
       { rotateY: [0, 360] },
       { ease: [0, 0.86, 1, 0.07], duration: 2 }
     );
-    animate(".shine", { x: [0, 400] }, { duration: 2 });
+    animate(".shine", { x: [-20, 380], rotate: [12, 12] }, { duration: 2 });
     animate(
       ".card",
       { scale: [1.2, 1] },
@@ -87,7 +87,7 @@ function IssuedCard() {
               </div>
             </div>
 
-            <CardFront physical />
+            {/* <CardFront physical /> */}
 
             {/* Footer */}
             {/* <div className="flex flex-col items-center gap-6">

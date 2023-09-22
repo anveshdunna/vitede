@@ -5,7 +5,7 @@ const CardFront = (props) => {
   const bgMain = physical ? "bg-gray-800" : "bg-gray-50";
   const logo = physical ? "text-black" : "text-gray-300";
   const textWeak = physical ? "text-gray-300" : "text-gray-700";
-  const shimmerColor = physical ? "opacity-100" : "opacity-100";
+  const shimmerColor = physical ? "opacity-20" : "opacity-100";
 
   return (
     <div className="relative z-[2] overflow-clip rounded-2xl outline outline-1 -outline-offset-1 outline-gray-900/20">
@@ -81,7 +81,7 @@ const CardFront = (props) => {
 
         {/* Shimmer 1 */}
         <div
-          className={`absolute -left-10 -top-40 h-[40rem] w-10 bg-white ${shimmerColor} shine opacity-50`}
+          className={`absolute -left-10 -top-40 h-[40rem] w-10 bg-white ${shimmerColor} shine blur-md`}
         ></div>
 
         {/* IL Logo */}
@@ -99,7 +99,7 @@ const CardFront = (props) => {
           </svg>
         </div> */}
 
-        {/* <div className="absolute">
+        <div className="absolute">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="162"
@@ -115,10 +115,10 @@ const CardFront = (props) => {
                 animate={{ x1: "230%", x2: "330%" }}
               >
                 <stop offset="0%" stopColor="black" />
-                <stop offset="20%" stopColor="black" />
-                <stop offset="20%" stopColor="white" />
-                <stop offset="80%" stopColor="white" />
-                <stop offset="80%" stopColor="black" />
+                <stop offset="38%" stopColor="black" />
+                <stop offset="40%" stopColor="#E5E9ED" />
+                <stop offset="80%" stopColor="#E5E9ED" />
+                <stop offset="82%" stopColor="black" />
                 <stop offset="100%" stopColor="black" />
               </motion.linearGradient>
             </defs>
@@ -127,7 +127,7 @@ const CardFront = (props) => {
               d="M56.3 48c8.99 0 16.29-7.17 16.29-16s-7.3-16-16.3-16S40 23.17 40 32s7.3 16 16.3 16Zm11.86-23.36.33.22.25.22.1.22v.22l-.23.66-.22.42-.38.64-1.37 1.35-4.42 3.88-6.28 5.25-5.27 2.8-1.95.85h-.75l-4.05-1.81.1-.37 2-1.3.78-.02 3.85.46 3.1-3.07-6.2-2.99-.18-.1.03-.17.15-.2 3.1-1.69.3-.07 2.77.17 4.25.37 1.02-.03 3.85-3.11 1.08-.86 1.8-1.33.67-.42.45-.22h1.1l.22.03ZM80.36 22.45c1.47 0 2.4-.98 2.35-2.2 0-1.28-.88-2.26-2.28-2.26-1.35 0-2.3.98-2.3 2.26 0 1.22.93 2.2 2.23 2.2ZM78.61 25.82v19.85h3.67V25.82h-3.67ZM92.8 20.12v5.7h5.28v2.74H92.8v10.7c0 2.46.7 3.86 2.75 3.86a8.3 8.3 0 0 0 2.13-.25l.17 2.7c-.7.3-1.85.5-3.25.5-1.72 0-3.1-.55-3.97-1.53-1.05-1.06-1.43-2.82-1.43-5.18v-10.8h-3.12v-2.74h3.12v-4.77l3.6-.93ZM103.97 22.45c1.48 0 2.4-.98 2.35-2.2 0-1.28-.9-2.26-2.27-2.26-1.35 0-2.3.98-2.3 2.26 0 1.22.92 2.2 2.22 2.2ZM102.22 25.82v19.85h3.68V25.82h-3.68ZM112 16.54h3.67v29.13H112V16.54ZM123.61 22.45c1.48 0 2.4-.98 2.35-2.2 0-1.28-.9-2.26-2.27-2.26-1.35 0-2.3.98-2.3 2.26 0 1.22.92 2.2 2.22 2.2ZM121.86 25.82v19.85h3.68V25.82h-3.68ZM136.06 20.12v5.7h5.27v2.74h-5.27v10.7c0 2.46.7 3.86 2.75 3.86a8.3 8.3 0 0 0 2.12-.25l.18 2.7c-.7.3-1.85.5-3.25.5-1.72 0-3.1-.55-3.97-1.53-1.05-1.06-1.43-2.82-1.43-5.18v-10.8h-3.12v-2.74h3.12v-4.77l3.6-.93ZM154.2 43.31c-3.7 0-6.87-2-6.94-6.9h14.22c.05-.36.12-.95.12-1.69 0-3.65-1.75-9.35-8.35-9.35-5.9 0-9.5 4.72-9.5 10.7 0 6 3.73 10.02 9.95 10.02 3.23 0 5.43-.67 6.73-1.23l-.63-2.58a13.27 13.27 0 0 1-5.6 1.03Zm-1.25-15.36c4.15 0 5.15 3.56 5.1 5.87h-10.74c.3-2.5 1.92-5.87 5.64-5.87Z"
             />
           </svg>
-        </div> */}
+        </div>
       </motion.div>
     </div>
   );
