@@ -14,6 +14,7 @@ import ILRadio from "../components/core/ILRadio";
 import ILRadioGroup from "../components/core/ILRadioGroup";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import CardBack from "../components/CardBack";
+import { Spinner } from "../assets/Anim";
 
 const CardType = (props) => {
   const { title, description, physical, onClickFn } = props;
@@ -33,12 +34,26 @@ const CardType = (props) => {
   );
 };
 
-const Label = (props) => {
-  const { label } = props;
+const Dialog = () => {
   return (
-    <>
-      <div className="text-body2 font-medium text-gray-700">{label}</div>
-    </>
+    <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-gray-900/40">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          opacity: { duration: 0.3 },
+          y: { duration: 0.3 },
+          ease: "easeOut",
+        }}
+        className="flex w-[30rem] flex-col items-center gap-6 rounded-2xl bg-white px-6 py-10 text-center text-body2 text-gray-700 shadow-s400"
+      >
+        <div>
+          <Spinner />
+        </div>
+        Processing details and connecting to bank servers. This could take a few
+        seconds.
+      </motion.div>
+    </div>
   );
 };
 
@@ -49,6 +64,9 @@ function IssueCard() {
   const [showPhysical, setShowPhysical] = useState(false);
   const [radioValue, setRadioValue] = useState(1);
   const [cardPhysical, setCardPhysical] = useState(null);
+  const [rippleAnim, setRippleAnim] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+
   const onRadioChange = (e) => {
     console.log("radio checked", e.target.value);
     setRadioValue(e.target.value);
@@ -70,7 +88,12 @@ function IssueCard() {
   const handleChange = (value) => {
     setShowPhysical(!showPhysical);
     setCardPhysical(!cardPhysical);
+    setRippleAnim(true);
   };
+
+  const [name, setName] = useState("Card name");
+  const [holder, setHolder] = useState("Cardholder name");
+  const [amount, setAmount] = useState("");
 
   return (
     <Page>
@@ -102,7 +125,7 @@ function IssueCard() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="flex w-full max-w-md flex-col items-start gap-6"
+                    className="mb-10 flex w-full max-w-md flex-col items-start gap-6"
                   >
                     <Select
                       size="large"
@@ -118,12 +141,22 @@ function IssueCard() {
 
                     <div className="w-full">
                       <ILLabel label="Who is this card for?" />
-                      <ILInput size="large" />
+                      <ILInput
+                        size="large"
+                        onChange={(e) => {
+                          setHolder(e.target.value);
+                        }}
+                      />
                     </div>
 
                     <div className="w-full">
                       <ILLabel label="Card name" />
-                      <ILInput size="large" />
+                      <ILInput
+                        size="large"
+                        onChange={(e) => {
+                          setName(e.target.value);
+                        }}
+                      />
                     </div>
 
                     <div className="w-full">
@@ -131,7 +164,12 @@ function IssueCard() {
                         label="Card spend limit"
                         description="Maximum amount that can be spent on this card in a month."
                       />
-                      <ILInput size="large" />
+                      <ILInput
+                        size="large"
+                        onChange={(e) => {
+                          setAmount(e.target.value);
+                        }}
+                      />
                     </div>
 
                     {showPhysical && (
@@ -237,7 +275,18 @@ function IssueCard() {
                       </ILCheckbox>
                     </div>
 
-                    <ILButton variant="secondary">Confirm</ILButton>
+                    <ILButton
+                      variant="secondary"
+                      onClick={() => {
+                        setTimeout(() => {
+                          navigate("/cards/issued-card");
+                        }, 3000);
+
+                        setShowDialog(true);
+                      }}
+                    >
+                      Confirm
+                    </ILButton>
                   </motion.div>
                 ) : (
                   <motion.div
@@ -272,19 +321,21 @@ function IssueCard() {
             {showDetails && (
               <div className="relative col-span-2 mx-4 flex flex-col items-center">
                 <div className="fixed">
-                  <div className="relative">
-                    <div className="absolute">
-                      <CardBack physical={!cardPhysical} />
-                    </div>
-
-                    <CardBack physical={cardPhysical} anim />
-                  </div>
+                  <CardBack
+                    physical={cardPhysical}
+                    name={name}
+                    holder={holder}
+                    amount={amount}
+                    ripple={rippleAnim}
+                  />
                 </div>
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {showDialog && <Dialog />}
     </Page>
   );
 }

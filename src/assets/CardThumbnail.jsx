@@ -10,14 +10,14 @@ const CardThumbnail = (props) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_2515_39714)">
+          <g clipPath="url(#clip0_2515_39714)">
             <rect width="108" height="72" rx="8" fill="#212837" />
             <rect
               width="108"
               height="72"
               fill="url(#paint0_radial_2515_39714)"
             />
-            <g clip-path="url(#clip1_2515_39714)">
+            <g clipPath="url(#clip1_2515_39714)">
               <path
                 d="M90.4433 49.7104H83.4434V62.2896H90.4433V49.7104Z"
                 fill="#FF5F00"
@@ -37,7 +37,7 @@ const CardThumbnail = (props) => {
             </g>
             <rect x="12" y="8" width="8" height="8" rx="4" fill="black" />
             <rect x="22" y="10" width="17" height="4" rx="2" fill="black" />
-            <g clip-path="url(#clip2_2515_39714)">
+            <g clipPath="url(#clip2_2515_39714)">
               <rect
                 x="12"
                 y="25"
@@ -67,8 +67,8 @@ const CardThumbnail = (props) => {
               gradientUnits="userSpaceOnUse"
               gradientTransform="rotate(33.6901) scale(129.8 194.7)"
             >
-              <stop stop-color="#363E4F" />
-              <stop offset="1" stop-color="#212837" />
+              <stop stopColor="#363E4F" />
+              <stop offset="1" stopColor="#212837" />
             </radialGradient>
             <clipPath id="clip0_2515_39714">
               <rect width="108" height="72" rx="8" fill="white" />
@@ -94,14 +94,14 @@ const CardThumbnail = (props) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_2515_39787)">
+          <g clipPath="url(#clip0_2515_39787)">
             <rect width="108" height="72" rx="8" fill="#F9FAFB" />
             <rect
               width="108"
               height="72"
               fill="url(#paint0_radial_2515_39787)"
             />
-            <g clip-path="url(#clip1_2515_39787)">
+            <g clipPath="url(#clip1_2515_39787)">
               <path
                 d="M90.4433 49.7104H83.4434V62.2896H90.4433V49.7104Z"
                 fill="#FF5F00"
@@ -139,8 +139,8 @@ const CardThumbnail = (props) => {
               gradientUnits="userSpaceOnUse"
               gradientTransform="rotate(33.6901) scale(129.8 194.7)"
             >
-              <stop stop-color="white" />
-              <stop offset="1" stop-color="#F9FAFB" />
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="#F9FAFB" />
             </radialGradient>
             <clipPath id="clip0_2515_39787">
               <rect width="108" height="72" rx="8" fill="white" />

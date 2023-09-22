@@ -16,6 +16,7 @@ import Concierge from "./pages/Concierge";
 import Approvals from "./pages/Approvals";
 import CardsHome from "./pages/CardsHome";
 import IssueCard from "./pages/IssueCard";
+import IssuedCard from "./pages/IssuedCard";
 import CardsCards from "./pages/CardsCards";
 import CardsTransactions from "./pages/CardsTransactions";
 import Help from "./pages/Help";
@@ -71,6 +72,7 @@ function App() {
             <Route path="expense/approvals" element={<ExpenseHome />} />
             <Route path="cards/overview" element={<CardsHome />} />
             <Route path="cards/issue-card" element={<IssueCard />} />
+            <Route path="cards/issued-card" element={<IssuedCard />} />
 
             <Route path="cards/cards" element={<CardsCards />} />
             <Route path="cards/transactions" element={<CardsTransactions />} />

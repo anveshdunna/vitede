@@ -14,7 +14,7 @@ function CreateTrip() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 30000);
   }, []);
 
   return (

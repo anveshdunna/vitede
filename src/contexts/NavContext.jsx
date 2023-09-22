@@ -17,7 +17,8 @@ export const NavContextProvider = ({ children }) => {
     path2 === "create-trip" ||
     path2 === "select-options" ||
     path2 === "confirm-details" ||
-    path2 === "issue-card"
+    path2 === "issue-card" ||
+    path2 === "issued-card"
   ) {
     pnavOpen = false;
   } else {
