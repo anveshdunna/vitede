@@ -5,29 +5,22 @@ import Page from "./Page";
 import { useEffect } from "react";
 import CardFront from "../components/CardFront";
 import { transform } from "@babel/core";
+import { useCard } from "../contexts/CardContext";
 
 function IssuedCard() {
+  const {
+    setName: aName,
+    setHolderName,
+    setAmount: aAmount,
+    setPhysical,
+    physical,
+    name,
+    holdername,
+    amount,
+  } = useCard();
   const [scope, animate] = useAnimate();
-  const choreo = async () => {
-    // await animate(
-    //   ".card",
-    //   { scale: [0, 1.2], opacity: [0, 1], rotateY: [0, 0] },
-    //   {
-    //     scale: { duration: 1, ease: "easeOut" },
-    //     opacity: { duration: 0.1 },
-    //     rotateY: { duration: 1.2, ease: "easeOut" },
-    //   }
-    // );
-    // animate(
-    //   ".card",
-    //   { scale: [1.2, 1], rotateY: [0, 0] },
-    //   {
-    //     scale: { duration: 0.4, ease: "easeIn" },
-    //     rotateY: { duration: 0.4, ease: "easeIn" },
-    //     delay: 0.5,
-    //   }
-    // );
 
+  const choreo = async () => {
     await animate(
       ".card",
       { scale: [0, 1.2], opacity: [0, 1] },
@@ -47,6 +40,27 @@ function IssuedCard() {
       { scale: [1.2, 1] },
       { ease: [0.64, 0, 0.78, 0], duration: 1, delay: 1.05 }
     );
+    animate(
+      ".wave1",
+      {
+        width: [360, 400],
+        height: [240, 280],
+        borderRadius: [16, 36],
+        opacity: [1, 0],
+        scale: [0, 1],
+      },
+      { duration: 0.4, delay: 2, scale: { duration: 0.0001, delay: 2.1 } }
+    );
+    await animate(
+      ".header",
+      { y: [8, 0], opacity: [0, 1] },
+      { duration: 0.2, delay: 2.5, ease: "easeOut" }
+    );
+    await animate(
+      ".footer",
+      { y: [4, 0], opacity: [0, 1] },
+      { duration: 0.2, ease: "easeOut" }
+    );
   };
 
   useEffect(() => {
@@ -63,18 +77,27 @@ function IssuedCard() {
             style={{ perspective: "800px" }}
           >
             {/* Header */}
-            {/* <div className="text-title1 font-semibold">Virtual card issued</div> */}
+            <div className="header text-title1 font-semibold opacity-0">
+              {physical ? `Physical card` : `Virtual card`} issued
+            </div>
 
             {/* The actual card */}
             <div
               className="card relative flex h-[15rem] w-[22.5rem] items-center justify-center opacity-0"
               style={{ transformStyle: "preserve-3d" }}
             >
+              {/* Wave */}
+              <div className="wave1 absolute h-[15rem] w-[22.5rem] border-2 border-orange-500 bg-orange-500/40 opacity-0"></div>
               <div
                 className="absolute h-full w-full"
                 style={{ backfaceVisibility: "hidden" }}
               >
-                <CardBack />
+                <CardBack
+                  physical={physical}
+                  name={name}
+                  holder={holdername}
+                  amount={amount}
+                />
               </div>
               <div
                 className="absolute h-full w-full"
@@ -83,16 +106,17 @@ function IssuedCard() {
                   backfaceVisibility: "hidden",
                 }}
               >
-                <CardFront physical />
+                <CardFront physical={physical} />
               </div>
             </div>
 
-            {/* <CardFront physical /> */}
-
             {/* Footer */}
-            {/* <div className="flex flex-col items-center gap-6">
+            <div className="footer flex flex-col items-center gap-6 opacity-0">
               <div className="max-w-md text-center text-body2 text-gray-700">
-                This card is now active. Updates will be shared to{" "}
+                {physical
+                  ? `Delivery of the card can take up to 7-10 business days. `
+                  : `This card is now active. `}
+                Updates will be shared to{" "}
                 <span className="font-semibold">
                   cardholderemail@company.com
                 </span>
@@ -101,7 +125,7 @@ function IssuedCard() {
                 <ILButton variant="secondarySubtle">View card details</ILButton>
                 <ILButton variant="secondary">View all cards</ILButton>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import Page from "./Page";
 import Icon from "../assets/Icon";
 import CardThumbnail from "../assets/CardThumbnail";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ILSelect from "../components/core/ILSelect";
 import ILLabel from "../components/core/ILLabel";
 import ILInput from "../components/core/ILInput";
@@ -15,12 +15,13 @@ import ILRadioGroup from "../components/core/ILRadioGroup";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import CardBack from "../components/CardBack";
 import { Spinner } from "../assets/Anim";
+import { CardContext, useCard } from "../contexts/CardContext";
 
 const CardType = (props) => {
   const { title, description, physical, onClickFn } = props;
   return (
     <button
-      className="flex gap-6 rounded-xl p-6 shadow-b200 transition duration-200 hover:shadow-b200s400"
+      className="flex gap-6 rounded-xl p-6 shadow-b200 transition duration-200 hover:shadow-b200s400 active:shadow-b200"
       onClick={onClickFn}
     >
       <div className="shrink-0">
@@ -36,7 +37,7 @@ const CardType = (props) => {
 
 const Dialog = () => {
   return (
-    <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-gray-900/40">
+    <div className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-gray-900/40">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -67,6 +68,14 @@ function IssueCard() {
   const [rippleAnim, setRippleAnim] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
 
+  const {
+    setName: aName,
+    setHolderName,
+    setAmount: aAmount,
+    setPhysical,
+    physical,
+  } = useCard();
+
   const onRadioChange = (e) => {
     console.log("radio checked", e.target.value);
     setRadioValue(e.target.value);
@@ -76,6 +85,7 @@ function IssueCard() {
     setShowDetails(true);
     setDefaultType("virtual");
     setCardPhysical(false);
+    setPhysical(false);
   };
 
   const selectPhysical = () => {
@@ -83,12 +93,14 @@ function IssueCard() {
     setDefaultType("physical");
     setShowPhysical(true);
     setCardPhysical(true);
+    setPhysical(true);
   };
 
   const handleChange = (value) => {
     setShowPhysical(!showPhysical);
     setCardPhysical(!cardPhysical);
     setRippleAnim(true);
+    setPhysical(!physical);
   };
 
   const [name, setName] = useState("Card name");
@@ -145,6 +157,7 @@ function IssueCard() {
                         size="large"
                         onChange={(e) => {
                           setHolder(e.target.value);
+                          setHolderName(e.target.value);
                         }}
                       />
                     </div>
@@ -155,6 +168,7 @@ function IssueCard() {
                         size="large"
                         onChange={(e) => {
                           setName(e.target.value);
+                          aName(e.target.value);
                         }}
                       />
                     </div>
@@ -168,6 +182,7 @@ function IssueCard() {
                         size="large"
                         onChange={(e) => {
                           setAmount(e.target.value);
+                          aAmount(e.target.value);
                         }}
                       />
                     </div>

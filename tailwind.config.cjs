@@ -134,6 +134,8 @@ module.exports = {
       boxShadow: {
         cardborder: "inset 0 0 4px 4px blue",
         leftpanel: "1px 0px 2px 0px #1118271a, 4px 0px 8px 0px #11182726",
+        s100: "0px 1px 0px 0px #1118271a",
+        s200: "0px 2px 4px 0px #11182726, 0px 1px 1px 0px #1118271a",
         s300: "0px 4px 8px 0px #11182726, 0px 1px 2px 0px #1118271a",
         s400: "0px 8px 16px -2px #11182726, 0px 1px 3px 0px #11182726",
 

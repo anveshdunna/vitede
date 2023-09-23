@@ -85,8 +85,8 @@ export const globalNavLinks = [
     id: 3,
     key: 4,
     title: "Cards",
-    icon: "expense",
-    iconActive: "expenseFilled",
+    icon: "creditCards",
+    iconActive: "creditCardsFilled",
     path: "/cards/overview",
     subnav: [
       {

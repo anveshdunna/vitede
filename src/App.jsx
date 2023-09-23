@@ -29,16 +29,19 @@ import { useEffect } from "react";
 import ConfirmDetails from "./pages/ConfirmDetails";
 import { ConfigProvider } from "antd";
 import SelectionContextProvider from "./contexts/SelectionContext";
+import CardContextProvider from "./contexts/CardContext";
 
 function Layout(props) {
   return (
     <div className={`flex text-gray-900`}>
       <NavContextProvider>
         <SelectionContextProvider>
-          <ScrollToTop>
-            <GlobalNav />
-            {props.children}
-          </ScrollToTop>
+          <CardContextProvider>
+            <ScrollToTop>
+              <GlobalNav />
+              {props.children}
+            </ScrollToTop>
+          </CardContextProvider>
         </SelectionContextProvider>
       </NavContextProvider>
     </div>

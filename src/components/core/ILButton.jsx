@@ -32,10 +32,15 @@ const ILButton = (props) => {
   const buttonSize = isSmall
     ? "px-3 py-1.5 h-8 text-caption1"
     : "px-4 py-2.5 h-10 text-body2";
+  const border =
+    isPrimarySubtle || isSecondarySubtle || isCriticalSubtle
+      ? "border border-gray-200"
+      : null;
+  const shadow = "shadow-s100 hover:shadow-s200 active:shadow-none";
 
   return (
     <button
-      className={`inline-flex items-center justify-center rounded-lg ${backgroundColor} ${textColor} ${buttonSize} min-w-[5rem] align-middle font-['Inter'] font-medium`}
+      className={`inline-flex items-center justify-center rounded-lg ${backgroundColor} ${textColor} ${buttonSize} ${border} ${shadow} min-w-[5rem] align-middle font-['Inter'] font-medium transition duration-100`}
       {...restProps}
     >
       {children}
