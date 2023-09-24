@@ -38,7 +38,29 @@ input[type="checkbox"] {
   margin-top: 2px;
 }
 
-/* F1F3F5  #f9fafb #FBF5EF*/
+.custom-table .ant-table-thead > tr > th {
+  @apply bg-white py-3 text-caption1 font-medium text-gray-500;
+}
+
+.custom-table
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+  @apply bg-transparent;
+}
+.custom-table .ant-table-tbody > tr > td {
+  @apply bg-white text-body2 text-gray-700;
+}
+
+.custom-tabs .ant-tabs-nav-wrap {
+  @apply ml-4;
+}
+
+.custom-tabs .ant-tabs-extra-content {
+  @apply mr-4;
+}
 
 @layer base {
   :root {

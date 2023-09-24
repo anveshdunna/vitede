@@ -55,6 +55,9 @@ function App() {
         token: {
           fontFamily: "Inter",
         },
+        components: {
+          Table: {},
+        },
       }}
     >
       <Router>

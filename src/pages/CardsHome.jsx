@@ -9,7 +9,7 @@ function CardsHome() {
   return (
     <Page>
       <div className="section">
-        <div className="fluid-container">
+        <div className="fixed-container">
           <PageHeader title="Overview" action1="Issue card" />
 
           {/* Banner starts */}
