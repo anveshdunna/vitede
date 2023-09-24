@@ -7,7 +7,9 @@ const ILTable = (props) => {
     <ConfigProvider
       theme={{
         components: {
-          Table: {},
+          Table: {
+            borderColor: "#ec5d25",
+          },
         },
       }}
     >

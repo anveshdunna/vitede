@@ -6,8 +6,10 @@ import { useEffect } from "react";
 import CardFront from "../components/CardFront";
 import { transform } from "@babel/core";
 import { useCard } from "../contexts/CardContext";
+import { useNavigate } from "react-router-dom";
 
 function IssuedCard() {
+  const navigate = useNavigate();
   const {
     setName: aName,
     setHolderName,
@@ -123,7 +125,12 @@ function IssuedCard() {
               </div>
               <div className="flex gap-3">
                 <ILButton variant="secondarySubtle">View card details</ILButton>
-                <ILButton variant="secondary">View all cards</ILButton>
+                <ILButton
+                  variant="secondary"
+                  onClick={() => navigate("/cards/cards")}
+                >
+                  View all cards
+                </ILButton>
               </div>
             </div>
           </div>

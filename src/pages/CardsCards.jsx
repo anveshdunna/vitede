@@ -7,6 +7,8 @@ import ILTabs from "../components/core/ILTabs";
 import ILButton from "../components/core/ILButton";
 import ILSelect from "../components/core/ILSelect";
 import ILInput from "../components/core/ILInput";
+import Icon from "../assets/Icon";
+import { useNavigate } from "react-router-dom";
 
 function CardsCards() {
   return (
@@ -27,6 +29,7 @@ function CardsCards() {
 }
 
 const CardList = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="mx-4 mb-4 flex justify-between">
@@ -44,9 +47,16 @@ const CardList = () => {
         columns={Columns}
         dataSource={cardsData}
         pagination={false}
-        rowClassName=""
+        rowClassName="cursor-pointer"
         sticky={{
           offsetHeader: 0,
+        }}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: (event) => {
+              navigate("/cards/cards/card-details");
+            }, // click row
+          };
         }}
       />
     </>
@@ -82,15 +92,22 @@ const items = [
 const Columns = [
   {
     title: "Name",
-    dataIndex: "name",
     key: "name",
     width: "30%",
+    render: (_, record) => (
+      <div className="flex items-center justify-between">
+        {record.name}
+        {record.status === "Active" ? null : (
+          <CardStatus label={record.status} />
+        )}
+      </div>
+    ),
   },
   {
     title: "Card number",
     key: "cardNumber",
     render: (_, record) => (
-      <div className="flex gap-2">
+      <div className="flex max-w-xs gap-2">
         <div>
           <Thumb cardType={record.cardType} />
         </div>
@@ -102,6 +119,15 @@ const Columns = [
     title: "Cardholder",
     dataIndex: "cardholder",
     key: "cardholder",
+    render: (_, record) => (
+      <div className="flex items-center gap-2">
+        <img
+          src={record.cardholderImg}
+          className="h-6 w-6 rounded-full bg-gray-100"
+        />
+        {record.cardholder}
+      </div>
+    ),
   },
   {
     title: "Spend limit",
@@ -121,6 +147,27 @@ const Columns = [
     title: "Amount spent",
     dataIndex: "spent",
     key: "spent",
+    render: (_, record) => (
+      <div className="flex items-center">
+        <div className="min-w-[3rem]">{record.spent}%</div>
+        <div className="relative h-1 w-full max-w-[6rem] overflow-hidden rounded-full bg-green-200">
+          <div
+            className={`h-1 border-r border-white bg-gray-900`}
+            style={{ width: `${record.spent}%` }}
+          ></div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: " ",
+    key: "action",
+    width: 56,
+    render: (_, record) => (
+      // <div className="text-orange-500">
+      <Icon name="more" color="#6B7280" />
+      // </div>
+    ),
   },
 ];
 
@@ -203,6 +250,30 @@ const Thumb = (props) => {
         </svg>
       )}
     </>
+  );
+};
+
+const CardStatus = (props) => {
+  const { label } = props;
+  const bgColor =
+    label === "Requested"
+      ? "bg-yellow-50 border-yellow-100 text-yellow-500"
+      : label === "Locked"
+      ? "bg-gray-50 border-gray-100 text-gray-500"
+      : "bg-red-50 border-red-100 text-red-500";
+  const icon =
+    label === "Requested"
+      ? "clockSmall"
+      : label === "Locked"
+      ? "lockSmall"
+      : "closeAltSmall";
+  return (
+    <div
+      className={`flex items-center gap-1 rounded-lg border ${bgColor} px-1 py-px`}
+    >
+      <Icon name={icon} color="currentColor" />
+      <div className="text-caption1 font-medium">{label}</div>
+    </div>
   );
 };
 

@@ -1,5 +1,10 @@
 const cardsData = [];
 
+const cardImages = [
+  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80",
+  "https://source.unsplash.com/random/80x80/?human",
+];
+
 const cardNames = [
   "Figma subscription",
   "Shopify subscription",
@@ -55,7 +60,7 @@ for (let i = 1; i <= 40; i++) {
     cardType: Math.random() > 0.5 ? "physical" : "virtual",
     status: status,
     cardholder: cardHolders[Math.floor(Math.random() * cardHolders.length)],
-    // cardholderImg: `https://unsplash.com/image${i}`, // Still a placeholder, replace with real Unsplash URLs
+    cardholderImg: `https://source.unsplash.com/random/80x80/?human%20face,${i}`, // Still a placeholder, replace with real Unsplash URLs
     limit: Math.floor(Math.random() * 20000),
     limitType: Math.random() > 0.5 ? "week" : "month",
     spent: spentValue,

@@ -30,6 +30,7 @@ import ConfirmDetails from "./pages/ConfirmDetails";
 import { ConfigProvider } from "antd";
 import SelectionContextProvider from "./contexts/SelectionContext";
 import CardContextProvider from "./contexts/CardContext";
+import CardDetails from "./pages/CardDetails";
 
 function Layout(props) {
   return (
@@ -79,6 +80,7 @@ function App() {
             <Route path="cards/overview" element={<CardsHome />} />
             <Route path="cards/issue-card" element={<IssueCard />} />
             <Route path="cards/issued-card" element={<IssuedCard />} />
+            <Route path="cards/cards/card-details" element={<CardDetails />} />
 
             <Route path="cards/cards" element={<CardsCards />} />
             <Route path="cards/transactions" element={<CardsTransactions />} />

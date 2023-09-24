@@ -6,6 +6,7 @@ export const IconMap = {
   chevronLeftSmall: ChevronLeftSmall,
   chevronRightSmall: ChevronRightSmall,
   chevronUpSmall: ChevronUpSmall,
+  clockSmall: ClockSmall,
   closeAltSmall: CloseAltSmall,
   coffeeSmall: CoffeeSmall,
   creditCards: CreditCards,
@@ -18,8 +19,10 @@ export const IconMap = {
   home: Home,
   homeFilled: HomeFilled,
   locationSmall: LocationSmall,
+  lockSmall: LockSmall,
   loyaltySmall: LoyaltySmall,
   menu: Menu,
+  more: More,
   notification: Notification,
   notificationFilled: NotificationFilled,
   searchSmall: SearchSmall,
@@ -108,6 +111,15 @@ function ClipboardBulletsSmall(props) {
     <path
       fill={props.color}
       d="M7 7.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm0 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM5.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm0 3a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-.415-9A1.5 1.5 0 0 1 6.5 1h3a1.5 1.5 0 0 1 1.415 1h.585A1.5 1.5 0 0 1 13 3.5v10a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-10A1.5 1.5 0 0 1 4.5 2h.585ZM6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3ZM5.085 3H4.5a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-10a.5.5 0 0 0-.5-.5h-.585A1.5 1.5 0 0 1 9.5 4h-3a1.5 1.5 0 0 1-1.415-1Z"
+    ></path>
+  );
+}
+
+function ClockSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M8 2a6 6 0 1 1 0 12A6 6 0 0 1 8 2Zm0 1a5 5 0 1 0 0 10A5 5 0 0 0 8 3Zm-.5 2a.5.5 0 0 1 .5.41V8h1.5a.5.5 0 0 1 .09 1H7.5a.5.5 0 0 1-.49-.41V5.5a.5.5 0 0 1 .5-.5Z"
     ></path>
   );
 }
@@ -220,6 +232,15 @@ function LocationSmall(props) {
   );
 }
 
+function LockSmall(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM5 4h-.5A2.5 2.5 0 0 0 2 6.5v5A2.5 2.5 0 0 0 4.5 14h7a2.5 2.5 0 0 0 2.5-2.5v-5A2.5 2.5 0 0 0 11.5 4H11v-.5a3 3 0 0 0-6 0V4Zm1-.5a2 2 0 1 1 4 0V4H6v-.5ZM11.5 5A1.5 1.5 0 0 1 13 6.5v5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5v-5A1.5 1.5 0 0 1 4.5 5h7Z"
+    ></path>
+  );
+}
+
 function LoyaltySmall(props) {
   return (
     <>
@@ -240,6 +261,15 @@ function Menu(props) {
     <path
       fill={props.color}
       d="M2 5.75C2 5.33579 2.33579 5 2.75 5H21.25C21.6642 5 22 5.33579 22 5.75C22 6.16421 21.6642 6.5 21.25 6.5H2.75C2.33579 6.5 2 6.16421 2 5.75ZM2 11.75C2 11.3358 2.33579 11 2.75 11H21.25C21.6642 11 22 11.3358 22 11.75C22 12.1642 21.6642 12.5 21.25 12.5H2.75C2.33579 12.5 2 12.1642 2 11.75ZM2.75 17C2.33579 17 2 17.3358 2 17.75C2 18.1642 2.33579 18.5 2.75 18.5H21.25C21.6642 18.5 22 18.1642 22 17.75C22 17.3358 21.6642 17 21.25 17H2.75Z"
+    ></path>
+  );
+}
+
+function More(props) {
+  return (
+    <path
+      fill={props.color}
+      d="M7.75 12a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0ZM13.75 12a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0ZM18 13.75a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"
     ></path>
   );
 }

@@ -39,7 +39,7 @@ input[type="checkbox"] {
 }
 
 .custom-table .ant-table-thead > tr > th {
-  @apply bg-white py-3 text-caption1 font-medium text-gray-500;
+  @apply border-b border-gray-300 bg-white py-3 text-caption1 font-medium text-gray-700;
 }
 
 .custom-table
@@ -51,7 +51,7 @@ input[type="checkbox"] {
   @apply bg-transparent;
 }
 .custom-table .ant-table-tbody > tr > td {
-  @apply bg-white text-body2 text-gray-700;
+  @apply border-b border-gray-100 bg-white text-body2 text-gray-700;
 }
 
 .custom-tabs .ant-tabs-nav-wrap {
